@@ -11,6 +11,17 @@ const Contact = () => {
           Share your idea or problem. We will provide you a prefect digital
           solution to elevate your online presence
         </div>
+        <div className="flex justify-center items-center py-[20px]">
+          <div className="text-black text-[32px] text-center font-pts font-[600] border-primaryDarkBlue border-[1px] w-fit py-[5px] px-[20px] rounded-[50px] bg-primaryBlue/50 uppercase">
+            Mail Us :  {" "}
+            <span className="text-red border-b-[1px] border-red ">
+              <a href="mailto:websyncr.info@gmail.com">
+                websyncr.info@gmail.com
+              </a>
+            </span>
+          </div>
+        </div>
+
         <div className="flex justify-center item-center">
           <iframe
             src="https://docs.google.com/forms/d/e/1FAIpQLSdEJZ1E1y9jPRLxDjoE5eWh_NffPVoEmNIfk_YIkRV5Lawatw/viewform?embedded=true"
