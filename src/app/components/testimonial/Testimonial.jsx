@@ -25,14 +25,14 @@ const Testimonial = () => {
 
   return (
     <div className="w-full mt-[50px] mb-[50px]" id="testimonial">
-      <div className="text-black text-[60px] font-pr font-[700] text-center">
+      <div className="text-black xs:text-[30px] lg:text-[60px] font-pr font-[700] text-center">
         Testimonial
       </div>
       <div className="mt-[30px]">
         <Slider {...settings}>
           {testimonial.map((data, idx) => (
-            <div key={idx} className="px-[90px] pt-[10px] pb-[30px]">
-              <div className="text-[30px] text-justify text-black font-pts font-[300]">
+            <div key={idx} className=" xs:px-[10px] lg:px-[90px] pt-[10px] pb-[30px]">
+              <div className="xs:text-[15px] lg:text-[30px] text-justify text-black font-pts font-[300]">
                 {data.dec}
               </div>
             </div>

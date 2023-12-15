@@ -3,17 +3,17 @@ import React from "react";
 const AboutUs = () => {
   return (
     <>
-      <div className="w-full px-[90px] bg-white pt-[50px] pb-[20px]" id="about">
-        <div className="text-black text-[60px] font-pr font-[700] text-center">
+      <div className="w-full xs:px-[10px] lg:px-[90px] bg-white pt-[50px] pb-[20px]" id="about">
+        <div className="text-black xs:text-[30px] lg:text-[60px] font-pr font-[700] text-center">
           About Us
         </div>
-        <div className="flex justify-between items-center mt-[30px]">
-          <div className="w-[50%]">
-            <div className="text-[40px] text-primaryBlue font-pr font-[600]">
+        <div className="flex justify-between xs:flex-col-reverse lg:flex-row items-center mt-[30px]">
+          <div className="xs:w-full lg:w-[50%]">
+            <div className="xs:text-[20px] lg:text-[40px] text-primaryBlue font-pr font-[600]">
               Helping businesses deliver exceptional online experiences for
               customer.
             </div>
-            <div className="text-[20px] text-black font-pts font-[400] text-justify mt-[20px]">
+            <div className="xs:text-[10px] lg:text-[20px] text-black font-pts font-[400] text-justify mt-[20px]">
               Welcome to <a href="/" className="text-primaryBlue">Websyncr</a> Corner, where digital dreams come to
               life! With a wealth of experience spanning over four years in web
               development, two years in mobile app development, and an
@@ -41,7 +41,7 @@ const AboutUs = () => {
             </div>
           </div>
           <img
-            className="h-[500px] w-[500px]"
+            className="xs:h-[250px] lg:h-[500px] lg:w-[500px]"
             src="/img/aboutus.webp"
             alt="about"
           ></img>

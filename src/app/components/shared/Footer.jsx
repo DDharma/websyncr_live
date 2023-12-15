@@ -5,10 +5,10 @@ const Footer = () => {
     <div className="w-full">
       <footer className="bg-white rounded-lg shadow dark:bg-gray-900 my-4">
         <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
-          <div className="sm:flex sm:items-center sm:justify-between">
+          <div className="xs:flex xs:items-center xs:justify-between xs:flex-col md:flex-row">
             <a
               href="https://flowbite.com/"
-              className="flex items-center space-x-3 rtl:space-x-reverse"
+              className="flex items-center space-x-3 rtl:space-x-reverse xs:mb-[20px] md:mb-0"
             >
               <img src="/img/logo.svg" className="h-8" alt="Flowbite Logo" />
               <span className="self-center text-[30px] font-semibold whitespace-nowrap text-primaryBlue font-sans dark:text-white">

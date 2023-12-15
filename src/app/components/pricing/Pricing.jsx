@@ -7,11 +7,11 @@ const Pricing = () => {
   const [selectedService, setSelectedService] = useState(services[0]);
   return (
     <>
-      <div className="w-full bg-white pt-[50px] px-[90px] pb-[50px]" id="pricing">
-        <div className="text-black text-[60px] font-pr font-[700] text-center">
+      <div className="w-full bg-white pt-[50px] xs:px-[10px] lg:px-[90px] pb-[50px]" id="pricing">
+        <div className="text-black xs:text-[30px] lg:text-[60px] font-pr font-[700] text-center">
           Pricing
         </div>
-        <div className="text-black text-[30px] font-pts font-[400] text-center">
+        <div className="text-black xs:text-[15px] lg:text-[30px] font-pts font-[400] text-center">
           You can find the best charger for our services all over the world
         </div>
         <div className="mt-[20px] flex gap-2">

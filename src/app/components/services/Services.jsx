@@ -8,15 +8,15 @@ const Services = () => {
 
   return (
     <>
-      <div className="w-full bg-white pt-[50px] px-[90px]" id="services">
-        <div className="text-black text-[60px] font-pr font-[700] text-center">
+      <div className="w-full bg-white xs:pt-[25px] lg:pt-[50px] xs:px-[10px] lg:px-[90px]" id="services">
+        <div className="text-black xs:text-[30px] lg:text-[60px] font-pr font-[700] text-center">
           What We Offer
         </div>
-        <div className="text-black text-[30px] font-pts font-[400] text-center">
+        <div className="text-black  xs:text-[15px] lg:text-[30px] font-pts font-[400] text-center">
           we offer services that help you establish a strong online presence
         </div>
         <div
-          className="h-[500px] w-full mt-[20px] relative"
+          className="xs:h-[300px] lg:h-[500px] w-full mt-[20px] relative"
           style={{
             backgroundImage: `url(${selectedService.img})`,
             backgroundSize: "cover",
@@ -29,7 +29,7 @@ const Services = () => {
                 <div
                   key={idx}
                   className={classNames(
-                    "w-[380px] mb-[5px] py-[20px] ml-[10px] mt-[10px] font-[500] rounded px-[20px] cursor-pointer hover:font-[700]",
+                    "xs:w-[190px] lg:w-[380px] mb-[5px] xs:py-[10px] lg:py-[20px] ml-[10px] mt-[10px] font-[500] rounded xs:px-[10px] lg:px-[20px] cursor-pointer hover:font-[700]",
                     data.id === selectedService.id
                       ? "bg-primaryBlue"
                       : "bg-white "
@@ -38,7 +38,7 @@ const Services = () => {
                 >
                   <div
                     className={classNames(
-                      "text-[20px] font-pr font-[700px] uppercase",
+                      "xs:text-[10px] lg:text-[20px] font-pr font-[700px] uppercase",
                       data.id === selectedService.id
                         ? "text-white text-[22px]"
                         : "text-primaryBlue"
@@ -50,7 +50,7 @@ const Services = () => {
               );
             })}
           </div>
-          <div className="text-[20px] text-primaryBlue font-pts font-[700px] absolute right-[0px] bottom-[30px] w-[600px] bg-black/50 px-[20px] py-[10px] rounded">
+          <div className=" xs:text-[10px] lg:text-[20px] text-primaryBlue font-pts font-[700px] absolute right-[0px] xs:bottom-0 lg:bottom-[30px] xs:w-[300px] lg:w-[600px] bg-black/50 xs:px-[10px] xs:py-[5px] lg:px-[20px] lg:py-[10px] rounded">
             <div>{selectedService.des}</div>
               {/* <div  className="flex gap-[10px] mt-[20px] cursor-pointer text-white bg-primaryBlue w-fit px-[16px] py-[8px] rounded font-pts font-[500] hover:font-[700]">
                 Details
