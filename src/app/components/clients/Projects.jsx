@@ -11,7 +11,7 @@ const Projects = () => {
         Projects
       </div>
       <div className="flex justify-between items-start mt-[30px] xs:flex-col lg:flex-row">
-        <div className=" xs:w-full lg:w-[50%] xs:flex lg:block overflow-scroll gap-[10px] scrollbar-hidden">
+        <div className=" xs:w-full lg:w-[50%] xs:flex lg:block overflow-scroll hideScroll gap-[20px] scrollbar-hidden">
           {pricing?.map((data, idx) => {
             return (
               <div

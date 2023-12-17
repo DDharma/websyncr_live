@@ -11,3 +11,11 @@ body {
   color: black;
   background: rgb(245, 245, 245)
 }
+
+.hideScroll::-webkit-scrollbar {
+    display: none;
+}
+
+.hideSickAerrow .slick-arrow {
+  display: none !important;
+}

@@ -28,7 +28,7 @@ const Testimonial = () => {
       <div className="text-black xs:text-[30px] lg:text-[60px] font-pr font-[700] text-center">
         Testimonial
       </div>
-      <div className="mt-[30px]">
+      <div className="mt-[30px] hideSickAerrow">
         <Slider {...settings}>
           {testimonial.map((data, idx) => (
             <div key={idx} className=" xs:px-[10px] lg:px-[90px] pt-[10px] pb-[30px]">
