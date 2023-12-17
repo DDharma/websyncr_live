@@ -37,14 +37,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       />
 
       <body className={inter.className}>
-        <noscript>
-          <iframe
+        <noscript
+          dangerouslySetInnerHTML={{
+            __html: `<iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-55D6H5HS"
             height="0"
             width="0"
             style="display:none;visibility:hidden"
-          ></iframe>
-        </noscript>
+          ></iframe>`,
+          }}
+        />
+
         {children}
       </body>
     </html>
