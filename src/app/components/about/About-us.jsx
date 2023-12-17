@@ -41,6 +41,8 @@ const AboutUs = () => {
             </div>
           </div>
           <img
+            loading="lazy"
+            decoding="async"
             className="xs:h-[250px] lg:h-[500px] lg:w-[500px]"
             src="/img/aboutus.webp"
             alt="about"
