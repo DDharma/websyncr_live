@@ -20,7 +20,13 @@ module.exports = {
       colors:{
         primaryBlue:'#00C2FF',
         primaryDarkBlue:"#006585",
-        red:'#F00'
+        red:'#F00',
+        white: '#FFFFFF',
+        lightBlue: '#80E1FF',  // Lighter shade of primaryBlue
+        darkBlue: '#004B61',   // Darker shade of primaryDarkBlue
+        skyBlue: '#B3EBFF',    // Very light blue
+        navy: '#003A4F',       // Very dark blue
+        gray: '#D4D4D4'        // Neutral gray
       },
       screens: {
         'xs':'320px',
@@ -29,7 +35,6 @@ module.exports = {
         'lg':'1024px',
         'xl':'1280px',
         'xxl':'1536px'
-
       }
     },
   },

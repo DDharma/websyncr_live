@@ -2,54 +2,98 @@ import React from "react";
 
 const AboutUs = () => {
   return (
-    <>
-      <div className="w-full xs:px-[10px] lg:px-[90px] bg-white pt-[50px] pb-[20px]" id="about">
-        <div className="text-black xs:text-[30px] lg:text-[60px] font-pr font-[700] text-center">
-          About Us
-        </div>
-        <div className="flex justify-between xs:flex-col-reverse lg:flex-row items-center mt-[30px]">
-          <div className="xs:w-full lg:w-[50%]">
-            <div className="xs:text-[20px] lg:text-[40px] text-primaryBlue font-pr font-[600]">
-              Helping businesses deliver exceptional online experiences for
-              customer.
-            </div>
-            <div className="xs:text-[10px] lg:text-[20px] text-black font-pts font-[400] text-justify mt-[20px]">
-              Welcome to <a href="/" className="text-primaryBlue">Websyncr</a> Corner, where digital dreams come to
-              life! With a wealth of experience spanning over four years in web
-              development, two years in mobile app development, and an
-              additional four years dedicated to mastering the intricacies of
-              WordPress, we are your go-to freelance developer for all things
-              digital. Our journey began with a passion for crafting seamless
-              and user-centric web experiences. Over the years, we&apos;ve expanded
-              our expertise into the dynamic realm of mobile app development,
-              bringing innovation and functionality to the palm of your hands.
-              What sets us apart is not just the code we write, but the
-              solutions we deliver. We thrive on translating your ideas into
-              captivating websites, intuitive mobile apps, and robust WordPress
-              platforms. Whether you&apos;re embarking on a digital venture or
-              seeking to enhance your online presence, we&apos;ve got the skills to
-              make it happen. But we don&apos;t stop there – our journey extends into
-              the cloud with a solid two years of hands-on experience in AWS. We
-              understand the importance of a reliable and scalable
-              infrastructure, ensuring that your digital presence remains secure
-              and performs at its best. At <a href="/" className="text-primaryBlue">Websyncr&apos;s</a> Corner, we believe in
-              turning challenges into opportunities and dreams into reality. <br/>
-              <hr className="my-[20px]"/>
-              Let&apos;s collaborate and build something extraordinary for your
-              digital future. Feel free to customize it further to align with
-              your personal style and brand!
+    <section 
+      className="w-full bg-gradient-to-br from-skyBlue/10 to-primaryBlue/25 py-5" 
+      id="about"
+    >
+      <div className="max-w-8xl mx-auto xs:px-[10px] md:px-[50px] lg:px-[90px]">
+        <h2 
+          className="text-navy xs:text-[30px] md:text-[40px] lg:text-[60px] font-pr font-[700] text-center"
+        >
+          Our <span className="text-primaryBlue">Story</span>
+        </h2>
+        
+        <div className="mt-16 flex flex-col lg:flex-row items-center justify-between gap-12">
+          <div className="lg:w-1/2 bg-white/80 p-8 rounded-xl shadow-lg">
+            <h3 className="xs:text-[24px] md:text-[32px] lg:text-[40px] text-primaryBlue font-pr font-[600] mb-6">
+              Crafting Digital Excellence for Discerning Clients
+            </h3>
+            
+            <div className="space-y-6 xs:text-[14px] md:text-[16px] lg:text-[18px] text-navy font-pts font-[400] leading-relaxed">
+              <p>
+                Welcome to <a href="/" className="text-primaryBlue font-semibold hover:text-primaryDarkBlue transition-colors duration-300">Websyncr</a>, 
+                where digital aspirations transform into captivating realities. With a rich portfolio spanning over four years in premium web 
+                development, two years in sophisticated mobile app creation, and four years mastering the intricacies of WordPress, 
+                we are the artisans behind exceptional digital experiences.
+              </p>
+              
+              <p>
+                Our journey began with a passion for crafting seamless, user-centric web experiences that not only meet but exceed expectations. 
+                Over the years, we've expanded our expertise into the dynamic realm of mobile app development, bringing innovation and 
+                functionality to the palm of your hands.
+              </p>
+              
+              <p>
+                What distinguishes us is not merely the code we write, but the bespoke solutions we deliver. We excel in translating your 
+                vision into captivating websites, intuitive mobile applications, and robust WordPress platforms that resonate with your audience.
+              </p>
+              
+              <p>
+                Our expertise extends into the cloud with two years of specialized experience in AWS infrastructure. We understand that a 
+                reliable, scalable foundation is essential for maintaining a secure and high-performing digital presence.
+              </p>
+              
+              <div className="pt-6 border-t border-primaryBlue/30">
+                <p className="font-pr text-primaryBlue text-xl italic">
+                  "We don't just build websites; we craft digital experiences that elevate brands and captivate audiences."
+                </p>
+              </div>
+              
+              <div className="pt-4">
+                <a 
+                  href="#contact" 
+                  className="inline-flex items-center text-primaryBlue hover:text-primaryDarkBlue transition-colors duration-300 font-pts font-medium"
+                >
+                  <span>Let's create something extraordinary together</span>
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    className="h-5 w-5 ml-2" 
+                    viewBox="0 0 20 20" 
+                    fill="currentColor"
+                  >
+                    <path 
+                      fillRule="evenodd" 
+                      d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" 
+                      clipRule="evenodd" 
+                    />
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
-          <img
-            loading="lazy"
-            decoding="async"
-            className="xs:h-[250px] lg:h-[500px] lg:w-[500px]"
-            src="/img/aboutus.webp"
-            alt="about"
-          ></img>
+          
+          <div className="lg:w-1/2">
+            <div className="relative">
+              <div className="absolute -inset-4 bg-primaryBlue/20 rounded-xl blur-xl"></div>
+              <div className="relative overflow-hidden rounded-xl shadow-2xl">
+                <img
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-auto object-cover transition-transform duration-700 hover:scale-105"
+                  src="/img/aboutus.webp"
+                  alt="About Websyncr - Premium Web Development"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent"></div>
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <p className="text-white font-pr text-xl font-semibold">Websyncr</p>
+                  <p className="text-primaryBlue font-pts">Premium Digital Solutions</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </>
+    </section>
   );
 };
 

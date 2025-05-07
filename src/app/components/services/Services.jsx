@@ -7,70 +7,98 @@ const Services = () => {
   const [selectedService, setSelectedService] = useState(services[0]);
 
   return (
-    <>
-      <div className="w-full bg-white xs:pt-[25px] lg:pt-[50px] xs:px-[10px] lg:px-[90px]" id="services">
-        <div className="text-black xs:text-[30px] lg:text-[60px] font-pr font-[700] text-center">
-          What We Offer
-        </div>
-        <div className="text-black  xs:text-[15px] lg:text-[30px] font-pts font-[400] text-center">
-          we offer services that help you establish a strong online presence
-        </div>
-        <div
-          className="xs:h-[300px] lg:h-[500px] w-full mt-[20px] relative"
-          style={{
-            backgroundImage: `url(${selectedService.img})`,
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-          }}
+    <section 
+      className="w-full bg-white py-20 xs:px-[10px] md:px-[50px] lg:px-[90px]" 
+      id="services"
+    >
+      <div className="max-w-7xl mx-auto">
+        <h2 
+          className="text-navy xs:text-[30px] md:text-[40px] lg:text-[60px] font-pr font-[700] text-center"
         >
-          <div className="flex flex-col">
-            {services.map((data, idx) => {
-              return (
+          <span className="text-primaryBlue">Premium</span> Services
+        </h2>
+        
+        <p 
+          className="text-navy xs:text-[15px] md:text-[20px] lg:text-[24px] font-pts font-[400] text-center mt-4 max-w-3xl mx-auto"
+        >
+          We craft exceptional digital experiences that elevate your brand and captivate your audience
+        </p>
+        
+        <div className="mt-16">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+            {/* Service Navigation */}
+            <div className="md:col-span-4 flex md:flex-col overflow-x-auto md:overflow-visible hideScroll">
+              {services.map((data, idx) => (
                 <div
                   key={idx}
                   className={classNames(
-                    "xs:w-[190px] lg:w-[380px] mb-[5px] xs:py-[10px] lg:py-[20px] ml-[10px] mt-[10px] font-[500] rounded xs:px-[10px] lg:px-[20px] cursor-pointer hover:font-[700]",
+                    "flex-shrink-0 md:flex-shrink-1 mb-2 py-4 px-6 rounded-lg transition-all duration-300 cursor-pointer hover-lift",
                     data.id === selectedService.id
-                      ? "bg-primaryBlue"
-                      : "bg-white "
+                      ? "blue-gradient shadow-lg"
+                      : "bg-white/80 hover:bg-skyBlue/20"
                   )}
                   onClick={() => setSelectedService(data)}
                 >
-                  <div
+                  <h3
                     className={classNames(
-                      "xs:text-[10px] lg:text-[20px] font-pr font-[700px] uppercase",
+                      "xs:text-[14px] md:text-[18px] lg:text-[22px] font-pr font-bold uppercase tracking-wide",
                       data.id === selectedService.id
-                        ? "text-white text-[22px]"
-                        : "text-primaryBlue"
+                        ? "text-white"
+                        : "text-navy"
                     )}
                   >
                     {data.name}
-                  </div>
+                  </h3>
                 </div>
-              );
-            })}
-          </div>
-          <div className=" xs:text-[10px] lg:text-[20px] text-primaryBlue font-pts font-[700px] absolute right-[0px] xs:bottom-0 lg:bottom-[30px] xs:w-[300px] lg:w-[600px] bg-black/50 xs:px-[10px] xs:py-[5px] lg:px-[20px] lg:py-[10px] rounded">
-            <div>{selectedService.des}</div>
-              {/* <div  className="flex gap-[10px] mt-[20px] cursor-pointer text-white bg-primaryBlue w-fit px-[16px] py-[8px] rounded font-pts font-[500] hover:font-[700]">
-                Details
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="w-6 h-6"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M15.75 2.25H21a.75.75 0 01.75.75v5.25a.75.75 0 01-1.5 0V4.81L8.03 17.03a.75.75 0 01-1.06-1.06L19.19 3.75h-3.44a.75.75 0 010-1.5zm-10.5 4.5a1.5 1.5 0 00-1.5 1.5v10.5a1.5 1.5 0 001.5 1.5h10.5a1.5 1.5 0 001.5-1.5V10.5a.75.75 0 011.5 0v8.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V8.25a3 3 0 013-3h8.25a.75.75 0 010 1.5H5.25z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div> */}
+              ))}
+            </div>
+            
+            {/* Service Content */}
+            <div className="md:col-span-8 relative overflow-hidden rounded-xl shadow-2xl h-[400px] md:h-[500px]">
+              <div 
+                className="absolute inset-0 transition-all duration-700 transform scale-105"
+                style={{
+                  backgroundImage: `url(${selectedService.img})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/50 to-transparent"></div>
+              </div>
+              
+              <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-white">
+                <h3 className="text-primaryBlue text-2xl md:text-3xl font-pr font-bold mb-4">
+                  {selectedService.name}
+                </h3>
+                <p className="text-white font-pts text-base md:text-xl leading-relaxed">
+                  {selectedService.des}
+                </p>
+                <div className="mt-6">
+                  <a 
+                    href="#contact" 
+                    className="inline-flex items-center text-primaryBlue hover:text-white transition-colors duration-300 font-pts font-medium text-lg"
+                  >
+                    <span>Learn More</span>
+                    <svg 
+                      xmlns="http://www.w3.org/2000/svg" 
+                      className="h-5 w-5 ml-2" 
+                      viewBox="0 0 20 20" 
+                      fill="currentColor"
+                    >
+                      <path 
+                        fillRule="evenodd" 
+                        d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" 
+                        clipRule="evenodd" 
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </>
+    </section>
   );
 };
 
