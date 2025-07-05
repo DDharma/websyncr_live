@@ -70,7 +70,7 @@ const Header = () => {
             onClick={() => toggleMobileMenu()}
             data-collapse-toggle="navbar-default"
             type="button"
-            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-xl md:hidden bg-white/5 backdrop-blur-sm border border-primaryBlue/30 hover:bg-primaryBlue/20 focus:outline-none focus:ring-2 focus:ring-primaryBlue text-primaryBlue transition-all duration-300"
+            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-xl lg:hidden bg-white/5 backdrop-blur-sm border border-primaryBlue/30 hover:bg-primaryBlue/20 focus:outline-none focus:ring-2 focus:ring-primaryBlue text-primaryBlue transition-all duration-300"
             aria-controls="navbar-default"
             aria-expanded="false"
           >
@@ -108,14 +108,14 @@ const Header = () => {
             )}
           </button>
           
-          <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-            <ul className="font-medium flex flex-col items-center p-4 md:p-0 mt-4 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0">
+          <div className="hidden w-full lg:block lg:w-auto" id="navbar-default">
+            <ul className="font-medium flex flex-col items-center p-4 lg:p-0 mt-4 rounded-lg lg:flex-row lg:space-x-6 xl:space-x-8 rtl:space-x-reverse lg:mt-0">
               {["services", "pricing", "testimonial", "about", "project", "contact"].map((item) => (
                 <li key={item} className="nav-item">
                   <a
                     href={`#${item}`}
                     className={classNames(
-                      "block py-2 px-4 rounded-lg transition-all duration-300 md:p-2 uppercase tracking-wider text-sm font-pts font-semibold relative group",
+                      "block py-2 px-3 lg:px-4 rounded-lg transition-all duration-300 lg:p-2 uppercase tracking-wider text-xs lg:text-sm font-pts font-semibold relative group",
                       scrolled 
                         ? "text-slate-300 hover:text-primaryBlue hover:bg-primaryBlue/10" 
                         : "text-white hover:text-primaryBlue hover:bg-white/10"
@@ -130,10 +130,10 @@ const Header = () => {
                 <a
                   href="https://forms.gle/JEHEHnH3VC9wPgYB6"
                   target="_blank"
-                  className="group inline-flex items-center px-6 py-2.5 bg-gradient-to-r from-primaryBlue to-lightBlue rounded-xl text-white font-pts font-semibold uppercase tracking-wider shadow-lg shadow-primaryBlue/25 hover:shadow-xl hover:shadow-primaryBlue/40 transition-all duration-300 transform hover:scale-105"
+                  className="group inline-flex items-center px-4 lg:px-6 py-2 lg:py-2.5 bg-gradient-to-r from-primaryBlue to-lightBlue rounded-xl text-white font-pts font-semibold uppercase tracking-wider text-xs lg:text-sm shadow-lg shadow-primaryBlue/25 hover:shadow-xl hover:shadow-primaryBlue/40 transition-all duration-300 transform hover:scale-105"
                 >
                   <span>Reach Out</span>
-                  <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-3 h-3 lg:w-4 lg:h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
                   </svg>
                 </a>

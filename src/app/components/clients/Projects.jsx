@@ -51,10 +51,10 @@ const Projects = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             {/* Service Categories */}
             <div className="lg:col-span-4">
-              <div className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl overflow-hidden h-[700px] flex flex-col">
-                <div className="p-6 border-b border-white/10 flex-shrink-0">
-                  <h3 className="text-white text-xl font-pr font-semibold">Project Categories</h3>
-                  <p className="text-slate-400 text-sm mt-1">Browse by service type</p>
+              <div className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl overflow-hidden h-auto lg:h-[700px] flex flex-col">
+                <div className="p-4 md:p-6 border-b border-white/10 flex-shrink-0">
+                  <h3 className="text-white text-lg md:text-xl font-pr font-semibold">Project Categories</h3>
+                  <p className="text-slate-400 text-xs md:text-sm mt-1">Browse by service type</p>
                 </div>
                 
                 <div className="p-2">

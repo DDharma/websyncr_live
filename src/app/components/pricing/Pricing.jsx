@@ -56,14 +56,14 @@ const Pricing = () => {
         </div>
 
         {/* Main Content */}
-        <div className="grid lg:grid-cols-12 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
           {/* Service Selection - Desktop */}
           <div className="lg:col-span-4 hidden lg:block">
             <div className="sticky top-8">
-              <div className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl overflow-hidden h-[700px] flex flex-col">
-                <div className="p-6 border-b border-white/10 flex-shrink-0">
-                  <h3 className="text-white text-xl font-pr font-semibold">Select Service</h3>
-                  <p className="text-slate-400 text-sm mt-1">Choose from our premium offerings</p>
+              <div className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl overflow-hidden h-[600px] lg:h-[700px] flex flex-col">
+                <div className="p-4 lg:p-6 border-b border-white/10 flex-shrink-0">
+                  <h3 className="text-white text-lg lg:text-xl font-pr font-semibold">Select Service</h3>
+                  <p className="text-slate-400 text-xs lg:text-sm mt-1">Choose from our premium offerings</p>
                 </div>
                 
                 <div className="flex-1 overflow-y-auto custom-scrollbar">
@@ -168,41 +168,41 @@ const Pricing = () => {
 
           {/* Service Details */}
           <div className="lg:col-span-8">
-            <div className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl overflow-hidden h-[700px] flex flex-col">
+            <div className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl overflow-hidden min-h-[500px] md:min-h-[600px] lg:h-[700px] flex flex-col">
               {/* Header */}
-              <div className="relative p-8 bg-gradient-to-r from-primaryBlue/10 to-lightBlue/5 border-b border-white/10 flex-shrink-0">
-                <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+              <div className="relative p-4 md:p-6 lg:p-8 bg-gradient-to-r from-primaryBlue/10 to-lightBlue/5 border-b border-white/10 flex-shrink-0">
+                <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 lg:gap-6">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-3">
                       <div
-                        className="w-12 h-12 rounded-lg bg-cover bg-center shadow-lg"
+                        className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-cover bg-center shadow-lg"
                         style={{ backgroundImage: `url(${selectedService.img})` }}
                       ></div>
                       <div>
-                        <h3 className="text-white text-2xl lg:text-3xl font-pr font-bold uppercase tracking-wide">
+                        <h3 className="text-white text-lg md:text-xl lg:text-2xl xl:text-3xl font-pr font-bold uppercase tracking-wide">
                           {selectedService.tittle}
                         </h3>
-                        <p className="text-primaryBlue text-sm font-medium uppercase tracking-wider">
+                        <p className="text-primaryBlue text-xs md:text-sm font-medium uppercase tracking-wider">
                           {selectedService.name}
                         </p>
                       </div>
                     </div>
-                    <p className="text-slate-300 text-base leading-relaxed">
+                    <p className="text-slate-300 text-sm md:text-base leading-relaxed">
                       {selectedService.dec}
                     </p>
                   </div>
                   
                   <div className="text-center lg:text-right">
-                    <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-green/20 to-green/10 rounded-xl border border-green/30">
-                      <div className="text-green text-3xl lg:text-4xl font-bold font-pr">
+                    <div className="inline-flex items-center px-4 md:px-6 py-2 md:py-3 bg-gradient-to-r from-green/20 to-green/10 rounded-xl border border-green/30">
+                      <div className="text-green text-2xl md:text-3xl lg:text-4xl font-bold font-pr">
                         {selectedService.startingPrice}
                       </div>
                     </div>
-                    <div className="mt-3 space-y-1">
-                      <p className="text-slate-400 text-sm">
+                    <div className="mt-2 md:mt-3 space-y-1">
+                      <p className="text-slate-400 text-xs md:text-sm">
                         <span className="text-primaryBlue">⚡</span> Delivery: {selectedService.deliveryTime}
                       </p>
-                      <p className="text-slate-400 text-sm">
+                      <p className="text-slate-400 text-xs md:text-sm">
                         <span className="text-primaryBlue">🔄</span> Revisions: {selectedService.revision}
                       </p>
                     </div>
@@ -211,18 +211,18 @@ const Pricing = () => {
               </div>
 
               {/* Features */}
-              <div className="flex-1 overflow-y-auto custom-scrollbar p-8">
-                <div className="mb-8">
-                  <h4 className="text-white text-xl font-pr font-semibold mb-6 flex items-center">
-                    <span className="w-8 h-8 bg-primaryBlue/20 rounded-lg flex items-center justify-center mr-3">
-                      <svg className="w-4 h-4 text-primaryBlue" fill="currentColor" viewBox="0 0 20 20">
+              <div className="flex-1 overflow-y-auto custom-scrollbar p-4 md:p-6 lg:p-8">
+                <div className="mb-6 md:mb-8">
+                  <h4 className="text-white text-lg md:text-xl font-pr font-semibold mb-4 md:mb-6 flex items-center">
+                    <span className="w-6 h-6 md:w-8 md:h-8 bg-primaryBlue/20 rounded-lg flex items-center justify-center mr-2 md:mr-3">
+                      <svg className="w-3 h-3 md:w-4 md:h-4 text-primaryBlue" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
                     </span>
                     What's Included
                   </h4>
                   
-                  <div className="grid md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
                     {selectedService?.whatYouGet?.map((feature, idx) => (
                       <div
                         key={idx}
