@@ -1,6 +1,13 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 
 const Footer = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
   const navLinks = [
     { name: "Services", href: "#services" },
     { name: "Pricing", href: "#pricing" },
@@ -41,148 +48,232 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="w-full dark-blue-gradient">
-      <div className="max-w-7xl mx-auto px-4 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-          {/* Logo and Description */}
-          <div className="md:col-span-4">
-            <a
-              href="/"
-              className="flex items-center space-x-3 rtl:space-x-reverse mb-6"
-            >
-              <img
-                loading="lazy"
-                decoding="async"
-                src="/img/logo.svg"
-                className="h-10"
-                alt="Websyncr Logo"
-              />
-              <span className="self-center text-3xl font-semibold whitespace-nowrap text-primaryBlue font-sans">
-                websyncr
-              </span>
-            </a>
-            <p className="text-white/70 font-pts mb-6 max-w-md">
-              Elevating digital experiences with premium web development, mobile applications, 
-              and cloud solutions that captivate audiences and drive results.
-            </p>
-            <div className="flex space-x-4">
-              {socialLinks.map((link, index) => (
-                <a 
-                  key={index}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white hover:text-primaryBlue transition-colors duration-300 hover-lift"
-                  aria-label={link.name}
-                >
-                  {link.icon}
-                </a>
-              ))}
-            </div>
-          </div>
-          
-          {/* Navigation Links */}
-          <div className="md:col-span-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div>
-                <h3 className="text-primaryBlue text-lg font-pr font-semibold mb-4">Services</h3>
-                <ul className="space-y-3">
-                  <li>
-                    <a href="#services" className="text-white/70 hover:text-primaryBlue transition-colors duration-300 font-pts">
-                      Web Development
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#services" className="text-white/70 hover:text-primaryBlue transition-colors duration-300 font-pts">
-                      Mobile App Development
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#services" className="text-white/70 hover:text-primaryBlue transition-colors duration-300 font-pts">
-                      AWS Cloud Management
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#services" className="text-white/70 hover:text-primaryBlue transition-colors duration-300 font-pts">
-                      WordPress Development
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              
-              <div>
-                <h3 className="text-primaryBlue text-lg font-pr font-semibold mb-4">Company</h3>
-                <ul className="space-y-3">
-                  <li>
-                    <a href="#about" className="text-white/70 hover:text-primaryBlue transition-colors duration-300 font-pts">
-                      About Us
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#project" className="text-white/70 hover:text-primaryBlue transition-colors duration-300 font-pts">
-                      Projects
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#testimonial" className="text-white/70 hover:text-primaryBlue transition-colors duration-300 font-pts">
-                      Testimonials
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              
-              <div>
-                <h3 className="text-primaryBlue text-lg font-pr font-semibold mb-4">Contact</h3>
-                <ul className="space-y-3">
-                  <li>
-                    <a href="#contact" className="text-white/70 hover:text-primaryBlue transition-colors duration-300 font-pts">
-                      Get in Touch
-                    </a>
-                  </li>
-                  <li>
-                    <a href="mailto:websyncr.info@gmail.com" className="text-white/70 hover:text-primaryBlue transition-colors duration-300 font-pts">
-                      websyncr.info@gmail.com
-                    </a>
-                  </li>
-                  <li>
-                    <a 
-                      href="https://forms.gle/JEHEHnH3VC9wPgYB6" 
-                      target="_blank"
-                      className="inline-block mt-2 px-4 py-2 bg-primaryBlue/20 hover:bg-primaryBlue/30 text-primaryBlue rounded-lg font-pts text-sm transition-colors duration-300"
-                    >
-                      Schedule a Consultation
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <hr className="my-8 border-white/10" />
-        
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <span className="text-white/50 text-sm font-pts mb-4 md:mb-0">
-            © {new Date().getFullYear()}{" "}
-            <a
-              href="/"
-              className="hover:text-primaryBlue transition-colors duration-300"
-            >
-              Websyncr
-            </a>
-            . All Rights Reserved.
-          </span>
-          
-          <div className="flex flex-wrap justify-center gap-4">
-            {navLinks.map((link, index) => (
+    <footer className="relative w-full bg-gradient-to-b from-slate-800 to-slate-900 overflow-hidden">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-primaryBlue/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-lightBlue/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      </div>
+
+      {/* Grid Pattern Overlay */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, rgba(0, 194, 255, 0.15) 1px, transparent 0)`,
+          backgroundSize: '20px 20px'
+        }}></div>
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-4 py-12 md:py-16">
+        <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+            {/* Logo and Description */}
+            <div className="md:col-span-4">
               <a
-                key={index}
-                href={link.href}
-                className="text-white/50 hover:text-primaryBlue text-sm font-pts transition-colors duration-300"
+                href="/"
+                className="flex items-center space-x-3 rtl:space-x-reverse mb-6 group"
               >
-                {link.name}
+                <div className="relative">
+                  <img
+                    loading="lazy"
+                    decoding="async"
+                    src="/img/logo.svg"
+                    className="h-10 transition-transform duration-300 group-hover:scale-110"
+                    alt="Websyncr Logo"
+                  />
+                  <div className="absolute inset-0 bg-primaryBlue/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                <span className="self-center text-3xl font-semibold whitespace-nowrap bg-gradient-to-r from-primaryBlue to-lightBlue bg-clip-text text-transparent font-sans">
+                  websyncr
+                </span>
               </a>
-            ))}
+              
+              <p className="text-slate-300 font-pts mb-6 max-w-md leading-relaxed">
+                Elevating digital experiences with premium web development, mobile applications, 
+                and cloud solutions that captivate audiences and drive results.
+              </p>
+              
+              <div className="flex space-x-4">
+                {socialLinks.map((link, index) => (
+                  <a 
+                    key={index}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl flex items-center justify-center text-slate-400 hover:text-primaryBlue hover:bg-primaryBlue/20 hover:border-primaryBlue/30 transition-all duration-300 transform hover:scale-110"
+                    aria-label={link.name}
+                  >
+                    {link.icon}
+                  </a>
+                ))}
+              </div>
+            </div>
+            
+            {/* Navigation Links */}
+            <div className="md:col-span-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                  <h3 className="text-white text-lg font-pr font-semibold mb-6 flex items-center">
+                    <span className="w-6 h-6 bg-primaryBlue/20 rounded-lg flex items-center justify-center mr-3">
+                      <svg className="w-3 h-3 text-primaryBlue" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
+                      </svg>
+                    </span>
+                    Services
+                  </h3>
+                  <ul className="space-y-3">
+                    <li>
+                      <a href="#services" className="text-slate-400 hover:text-primaryBlue transition-colors duration-300 font-pts flex items-center group">
+                        <span className="w-1 h-1 bg-slate-600 rounded-full mr-3 group-hover:bg-primaryBlue transition-colors duration-300"></span>
+                        Web Development
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#services" className="text-slate-400 hover:text-primaryBlue transition-colors duration-300 font-pts flex items-center group">
+                        <span className="w-1 h-1 bg-slate-600 rounded-full mr-3 group-hover:bg-primaryBlue transition-colors duration-300"></span>
+                        Mobile App Development
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#services" className="text-slate-400 hover:text-primaryBlue transition-colors duration-300 font-pts flex items-center group">
+                        <span className="w-1 h-1 bg-slate-600 rounded-full mr-3 group-hover:bg-primaryBlue transition-colors duration-300"></span>
+                        AWS Cloud Management
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#services" className="text-slate-400 hover:text-primaryBlue transition-colors duration-300 font-pts flex items-center group">
+                        <span className="w-1 h-1 bg-slate-600 rounded-full mr-3 group-hover:bg-primaryBlue transition-colors duration-300"></span>
+                        WordPress Development
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                
+                <div>
+                  <h3 className="text-white text-lg font-pr font-semibold mb-6 flex items-center">
+                    <span className="w-6 h-6 bg-lightBlue/20 rounded-lg flex items-center justify-center mr-3">
+                      <svg className="w-3 h-3 text-lightBlue" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                      </svg>
+                    </span>
+                    Company
+                  </h3>
+                  <ul className="space-y-3">
+                    <li>
+                      <a href="#about" className="text-slate-400 hover:text-primaryBlue transition-colors duration-300 font-pts flex items-center group">
+                        <span className="w-1 h-1 bg-slate-600 rounded-full mr-3 group-hover:bg-primaryBlue transition-colors duration-300"></span>
+                        About Us
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#project" className="text-slate-400 hover:text-primaryBlue transition-colors duration-300 font-pts flex items-center group">
+                        <span className="w-1 h-1 bg-slate-600 rounded-full mr-3 group-hover:bg-primaryBlue transition-colors duration-300"></span>
+                        Projects
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#testimonial" className="text-slate-400 hover:text-primaryBlue transition-colors duration-300 font-pts flex items-center group">
+                        <span className="w-1 h-1 bg-slate-600 rounded-full mr-3 group-hover:bg-primaryBlue transition-colors duration-300"></span>
+                        Testimonials
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#pricing" className="text-slate-400 hover:text-primaryBlue transition-colors duration-300 font-pts flex items-center group">
+                        <span className="w-1 h-1 bg-slate-600 rounded-full mr-3 group-hover:bg-primaryBlue transition-colors duration-300"></span>
+                        Pricing
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                
+                <div>
+                  <h3 className="text-white text-lg font-pr font-semibold mb-6 flex items-center">
+                    <span className="w-6 h-6 bg-green/20 rounded-lg flex items-center justify-center mr-3">
+                      <svg className="w-3 h-3 text-green" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                      </svg>
+                    </span>
+                    Contact
+                  </h3>
+                  <ul className="space-y-3">
+                    <li>
+                      <a href="#contact" className="text-slate-400 hover:text-primaryBlue transition-colors duration-300 font-pts flex items-center group">
+                        <span className="w-1 h-1 bg-slate-600 rounded-full mr-3 group-hover:bg-primaryBlue transition-colors duration-300"></span>
+                        Get in Touch
+                      </a>
+                    </li>
+                    <li>
+                      <a href="mailto:websyncr.info@gmail.com" className="text-slate-400 hover:text-primaryBlue transition-colors duration-300 font-pts flex items-center group">
+                        <span className="w-1 h-1 bg-slate-600 rounded-full mr-3 group-hover:bg-primaryBlue transition-colors duration-300"></span>
+                        websyncr.info@gmail.com
+                      </a>
+                    </li>
+                    <li className="pt-2">
+                      <a 
+                        href="https://forms.gle/JEHEHnH3VC9wPgYB6" 
+                        target="_blank"
+                        className="group inline-flex items-center px-4 py-2 bg-primaryBlue/20 hover:bg-primaryBlue/30 border border-primaryBlue/30 hover:border-primaryBlue/50 text-primaryBlue rounded-lg font-pts text-sm transition-all duration-300 transform hover:scale-105"
+                      >
+                        <span>Schedule Consultation</span>
+                        <svg className="w-3 h-3 ml-2 group-hover:translate-x-1 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                        </svg>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="mt-12 pt-8 border-t border-white/10">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+              <div className="flex flex-col md:flex-row items-center gap-4">
+                <span className="text-slate-400 text-sm font-pts">
+                  © {new Date().getFullYear()}{" "}
+                  <a
+                    href="/"
+                    className="hover:text-primaryBlue transition-colors duration-300 font-semibold"
+                  >
+                    Websyncr
+                  </a>
+                  . All Rights Reserved.
+                </span>
+                
+                <div className="flex items-center space-x-4">
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-green rounded-full animate-pulse"></div>
+                    <span className="text-slate-400 text-xs font-pts">Available for new projects</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="flex flex-wrap justify-center gap-6">
+                {navLinks.map((link, index) => (
+                  <a
+                    key={index}
+                    href={link.href}
+                    className="text-slate-400 hover:text-primaryBlue text-sm font-pts transition-colors duration-300 relative group"
+                  >
+                    {link.name}
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primaryBlue transition-all duration-300 group-hover:w-full"></span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Back to Top Button */}
+          <div className="mt-8 text-center">
+            <a
+              href="#"
+              className="inline-flex items-center px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl text-slate-400 hover:text-primaryBlue hover:bg-primaryBlue/10 hover:border-primaryBlue/30 transition-all duration-300 transform hover:scale-105"
+            >
+              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+              </svg>
+              <span className="text-sm font-pts">Back to Top</span>
+            </a>
           </div>
         </div>
       </div>

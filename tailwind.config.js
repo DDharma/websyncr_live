@@ -26,7 +26,8 @@ module.exports = {
         darkBlue: '#004B61',   // Darker shade of primaryDarkBlue
         skyBlue: '#B3EBFF',    // Very light blue
         navy: '#003A4F',       // Very dark blue
-        gray: '#D4D4D4'        // Neutral gray
+        gray: '#D4D4D4',
+        green:'#008000'      // Neutral gray
       },
       screens: {
         'xs':'320px',

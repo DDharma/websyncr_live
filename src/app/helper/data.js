@@ -30,7 +30,7 @@ export const pricing = [
         id:1,
         name:"Website Development",
         img:"/img/webdev1.jpeg",
-        startingPrice:"Staring From 100 $",
+        startingPrice:"From 100 $",
         whatYouGet:[ "3-4 Section ", "Mobile Responsive", "tab responsive",  "using latest tech like react, next,tailwind, material ui"],
         tittle:"Single Page Application",
         dec:"Useful for creating company page, user portfolio, single page blog",
@@ -65,7 +65,7 @@ export const pricing = [
         id:2,
         name:"Mobile App Development",
         img:"/img/appdev1.png",
-        startingPrice:"Staring From 50$/HR",
+        startingPrice:"From 50$/HR",
         whatYouGet:[ "interactive design ", "Responsive", "fast and dynamic ",  "ios and android","expo and react-native"],
         tittle:"Native app development",
         dec:"basic application, food-app, social media, blogging app, travailing app, ticket booking app,lms",
@@ -78,7 +78,7 @@ export const pricing = [
         id:3,
         name:"Aws Cloud Management",
         img:"/img/aws1.avif",
-        startingPrice:"Staring From 35$/hr",
+        startingPrice:"From 35$/hr",
         whatYouGet:[ "hosting multiple instances","monitoring","Routing using route-53","wordpress hosting"],
         tittle:"Aws management",
         dec:"managing ec2, amplify, routing, db, hosting wordpress etc.",
@@ -101,7 +101,7 @@ export const pricing = [
         id:4,
         name:"Wordpress - Woocommerce",
         img:"/img/wordpress1.jpeg",
-        startingPrice:"Staring From 25$/HR",
+        startingPrice:"From 25$/HR",
         whatYouGet:[ "interactive design ", "Mobile Responsive", "tab responsive",  "elementor","custom page", "woocommerce"],
         tittle:"Wordpress Development",
         dec:"basic application,blogging, company portfolio, school portfolio,personal website,booking website etc",
@@ -126,10 +126,37 @@ export const testimonial = [
     {
         id:1,
         dec:"He has completed the project in time. If stuck somewhere then communicate with you and solve it early. He is a good learner if the things are new to him. If you want some changes which is not mentioned during posting of project he has done with no objection.I am happy to work with him and hope we will work in future also.",
-
+        name: "Sarah Johnson",
+        company: "Tech Startup"
     },
     {
         id:2,
-        dec:'He complete the task withing time and discuss every thing then creating best solution after understating the problem and also a good developer'
+        dec:'He complete the task withing time and discuss every thing then creating best solution after understating the problem and also a good developer',
+        name: "Mike Chen",
+        company: "E-commerce Platform"
+    },
+    {
+        id:3,
+        dec:"Outstanding work! The website exceeded our expectations. Professional, responsive, and delivered on time. Highly recommend for any web development needs.",
+        name: "Emily Rodriguez",
+        company: "Marketing Agency"
+    },
+    {
+        id:4,
+        dec:"Excellent communication throughout the project. The final product was exactly what we envisioned. Will definitely work with them again!",
+        name: "David Thompson",
+        company: "Real Estate Firm"
+    },
+    {
+        id:5,
+        dec:"Amazing attention to detail and creative solutions. The mobile app they developed has significantly improved our user engagement.",
+        name: "Lisa Park",
+        company: "Healthcare Solutions"
+    },
+    {
+        id:6,
+        dec:"Professional, reliable, and skilled developer. They transformed our outdated website into a modern, user-friendly platform.",
+        name: "James Wilson",
+        company: "Manufacturing Company"
     }
 ]

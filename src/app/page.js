@@ -14,7 +14,7 @@ export default function Home() {
     <>
       <Header />
       <Banner />
-      <Services />
+      {/* <Services /> */}
       <Pricing />
       <Testimonial />
       <AboutUs />
