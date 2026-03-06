@@ -3,14 +3,14 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 export const metadata = {
-  title: "Websyncr | Premium Web Development Solutions",
+  title: "Websyncr | AI Solutions, LLM Engineering & Premium Web Development",
   description:
-    "Elevate Your Online Presence with Professional Web Solutions. We create stunning websites, mobile apps, and digital experiences that captivate your audience.",
+    "Build intelligent AI chatbots, RAG systems, and LLM integrations alongside premium web development, mobile apps, and cloud infrastructure. Websyncr delivers cutting-edge AI and digital solutions for forward-thinking businesses.",
   keywords:
-    "web development, professional websites, premium web design, mobile app development, AWS cloud management, WordPress development",
+    "AI solutions, LLM integration, RAG systems, AI chatbot development, retrieval augmented generation, custom chatbots, web development, mobile app development, AWS cloud management, WordPress development",
   openGraph: {
-    title: "Websyncr | Premium Web Development Solutions",
-    description: "Elevate Your Online Presence with Professional Web Solutions",
+    title: "Websyncr | AI Solutions, LLM Engineering & Premium Web Development",
+    description: "Build intelligent AI chatbots, RAG systems, and LLM integrations alongside premium web and mobile applications.",
     url: "https://websyncr.com",
     siteName: "Websyncr",
     images: [
@@ -46,7 +46,7 @@ export default function RootLayout({ children }) {
           sizes="16x16"
           href="/img/favicon-16x16.png"
         />
-        <meta name="theme-color" content="#2B2B2B" />
+        <meta name="theme-color" content="#060B14" />
       </head>
       <script
         dangerouslySetInnerHTML={{

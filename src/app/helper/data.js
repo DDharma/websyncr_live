@@ -1,5 +1,17 @@
 export const services = [
     {
+        id:5,
+        name:"AI & LLM Solutions",
+        des:"Harness the power of large language models and retrieval-augmented generation to transform your business operations. From intelligent document processing to custom knowledge bases, we build AI systems that understand your domain and deliver measurable results.",
+        img:"/img/bannerBg.png"
+    },
+    {
+        id:6,
+        name:"AI Chatbot Development",
+        des:"Deploy intelligent conversational agents that handle customer inquiries, automate workflows, and scale your support operations. Our custom chatbots integrate with your existing systems and learn from your data to provide accurate, context-aware responses.",
+        img:"/img/bannerBg.png"
+    },
+    {
         id:1,
         name:"Website Development",
         des:"Turn your digital vision into reality with our expert website development. We create user-centric, visually appealing, and functional websites tailored to elevate your online presence and engage your audience effectively",
@@ -26,6 +38,30 @@ export const services = [
 ]
 
 export const pricing = [
+    {
+        id:5,
+        name:"AI & LLM Solutions",
+        img:"/img/bannerBg.png",
+        startingPrice:"From 150$/hr",
+        whatYouGet:["RAG pipeline setup", "Custom knowledge base", "LLM fine-tuning & integration", "Vector database setup", "Prompt engineering", "API integration & deployment"],
+        tittle:"Enterprise AI Solutions",
+        dec:"RAG systems, document intelligence, custom LLM integrations, AI-powered search, automated content generation, workflow automation",
+        deliveryTime:"2-4 weeks",
+        revision:"Iterative",
+        clients:[]
+    },
+    {
+        id:6,
+        name:"AI Chatbot Development",
+        img:"/img/bannerBg.png",
+        startingPrice:"From 100$/hr",
+        whatYouGet:["Custom trained chatbot", "Multi-channel deployment", "Analytics dashboard", "Human handoff flow", "Knowledge base integration", "Continuous learning"],
+        tittle:"Intelligent Chatbot Systems",
+        dec:"Customer support bots, internal knowledge assistants, lead qualification bots, appointment scheduling, FAQ automation",
+        deliveryTime:"1-3 weeks",
+        revision:"Iterative",
+        clients:[]
+    },
     {
         id:1,
         name:"Website Development",
@@ -72,7 +108,7 @@ export const pricing = [
         deliveryTime:"1 days",
         revision:"1 time",
         clients:[]
-        
+
     },
     {
         id:3,
@@ -123,6 +159,18 @@ export const pricing = [
 ]
 
 export const testimonial = [
+    {
+        id:7,
+        dec:"The RAG-powered knowledge base they built has cut our support ticket volume by 40%. Their understanding of LLM architecture and practical business applications is exceptional. A true AI engineering partner.",
+        name: "Priya Sharma",
+        company: "SaaS Platform"
+    },
+    {
+        id:8,
+        dec:"Our custom AI chatbot handles 70% of customer inquiries automatically now. The team's expertise in prompt engineering and retrieval systems delivered results that exceeded every benchmark we set.",
+        name: "Alex Rivera",
+        company: "Fintech Startup"
+    },
     {
         id:1,
         dec:"He has completed the project in time. If stuck somewhere then communicate with you and solve it early. He is a good learner if the things are new to him. If you want some changes which is not mentioned during posting of project he has done with no objection.I am happy to work with him and hope we will work in future also.",

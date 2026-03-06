@@ -1,10 +1,41 @@
 "use client";
 import { services } from "@/app/helper/data";
-import classNames from "classnames";
 import React, { useState, useEffect } from "react";
 
+const serviceIcons = {
+  5: ( // AI & LLM
+    <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" />
+    </svg>
+  ),
+  6: ( // AI Chatbot
+    <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
+    </svg>
+  ),
+  1: ( // Web Dev
+    <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+    </svg>
+  ),
+  2: ( // Mobile App
+    <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+    </svg>
+  ),
+  3: ( // AWS
+    <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z" />
+    </svg>
+  ),
+  4: ( // WordPress
+    <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+    </svg>
+  ),
+};
+
 const Services = () => {
-  const [selectedService, setSelectedService] = useState(services[0]);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -12,148 +43,63 @@ const Services = () => {
   }, []);
 
   return (
-    <section 
-      className="relative w-full bg-gradient-to-b from-slate-800 via-blue-900 to-slate-900 py-20 xs:px-[10px] md:px-[50px] lg:px-[90px] overflow-hidden" 
-      id="services"
-    >
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -left-40 w-80 h-80 bg-primaryBlue/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-lightBlue/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-primaryDarkBlue/5 rounded-full blur-2xl animate-pulse delay-500"></div>
-      </div>
+    <section className="relative w-full py-24 overflow-hidden section-divider" id="services">
+      <div className="absolute inset-0 mesh-gradient opacity-50"></div>
 
-      {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 opacity-50">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, rgba(0, 194, 255, 0.15) 1px, transparent 0)`,
-          backgroundSize: '20px 20px'
-        }}></div>
-      </div>
-
-      <div className="relative max-w-7xl mx-auto">
-        {/* Header Section */}
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="inline-flex items-center px-4 py-2 bg-primaryBlue/10 backdrop-blur-sm rounded-full border border-primaryBlue/20 mb-6">
-            <span className="text-primaryBlue text-sm font-medium tracking-wider uppercase">Our Services</span>
-          </div>
-          
-          <h2 className="text-white xs:text-[30px] md:text-[40px] lg:text-[60px] font-pr font-[700] mb-6">
-            <span className="bg-gradient-to-r from-primaryBlue to-lightBlue bg-clip-text text-transparent">Premium</span> Services
+      <div className="relative max-w-7xl mx-auto px-5 lg:px-8">
+        {/* Header */}
+        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <span className="inline-block text-primary text-xs font-pts font-medium tracking-[0.2em] uppercase mb-4">Our Capabilities</span>
+          <h2 className="text-white xs:text-[32px] md:text-[44px] lg:text-[56px] font-pr font-[700] leading-tight">
+            What We <span className="gradient-text">Build</span>
           </h2>
-          
-          <p className="text-slate-300 xs:text-[15px] md:text-[20px] lg:text-[24px] font-pts font-[400] max-w-3xl mx-auto leading-relaxed">
-            We craft exceptional digital experiences that elevate your brand and captivate your audience with cutting-edge technology
+          <p className="text-textMuted text-lg font-pts mt-4 max-w-2xl mx-auto leading-relaxed">
+            From intelligent AI systems to premium web experiences — solutions engineered to transform your business
           </p>
         </div>
-        
-        <div className="mt-16">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            {/* Service Navigation */}
-            <div className="lg:col-span-4">
-              <div className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl overflow-hidden">
-                <div className="p-6 border-b border-white/10">
-                  <h3 className="text-white text-xl font-pr font-semibold">Select Service</h3>
-                  <p className="text-slate-400 text-sm mt-1">Explore our premium offerings</p>
-                </div>
-                
-                <div className="p-2">
-                  {services.map((data, idx) => (
-                    <div
-                      key={idx}
-                      className={classNames(
-                        "relative mb-2 p-4 rounded-xl transition-all duration-300 cursor-pointer group",
-                        data.id === selectedService.id
-                          ? "bg-gradient-to-r from-primaryBlue/20 to-lightBlue/10 border border-primaryBlue/30"
-                          : "hover:bg-white/5 border border-transparent hover:border-primaryBlue/20"
-                      )}
-                      onClick={() => setSelectedService(data)}
-                    >
-                      {data.id === selectedService.id && (
-                        <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-primaryBlue to-lightBlue rounded-r-full"></div>
-                      )}
-                      
-                      <div className="flex items-center space-x-3">
-                        <div className={classNames(
-                          "w-3 h-3 rounded-full transition-all duration-300",
-                          data.id === selectedService.id ? "bg-primaryBlue" : "bg-slate-600 group-hover:bg-primaryBlue/50"
-                        )}></div>
-                        
-                        <h3 className={classNames(
-                          "xs:text-[14px] md:text-[16px] lg:text-[18px] font-pr font-bold uppercase tracking-wide transition-colors duration-300",
-                          data.id === selectedService.id ? "text-primaryBlue" : "text-white group-hover:text-primaryBlue"
-                        )}>
-                          {data.name}
-                        </h3>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-            
-            {/* Service Content */}
-            <div className="lg:col-span-8">
-              <div className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl overflow-hidden h-[400px] md:h-[500px] relative group">
-                <div 
-                  className="absolute inset-0 transition-all duration-700 transform scale-105 group-hover:scale-110"
-                  style={{
-                    backgroundImage: `url(${selectedService.img})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                  }}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/50 to-transparent"></div>
-                </div>
-                
-                {/* Content Overlay */}
-                <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
-                  <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-12 h-12 bg-primaryBlue/20 rounded-lg flex items-center justify-center">
-                        <div className="w-6 h-6 bg-primaryBlue rounded-full"></div>
-                      </div>
-                      <h3 className="text-white text-2xl md:text-3xl font-pr font-bold">
-                        {selectedService.name}
-                      </h3>
-                    </div>
-                    
-                    <p className="text-slate-300 font-pts text-base md:text-lg leading-relaxed mb-6">
-                      {selectedService.des}
-                    </p>
-                    
-                    <div className="flex flex-wrap gap-3">
-                      <div className="inline-flex items-center px-3 py-1 bg-primaryBlue/20 rounded-full border border-primaryBlue/30">
-                        <span className="text-primaryBlue text-sm font-medium">Premium Quality</span>
-                      </div>
-                      <div className="inline-flex items-center px-3 py-1 bg-green/20 rounded-full border border-green/30">
-                        <span className="text-green text-sm font-medium">Fast Delivery</span>
-                      </div>
-                      <div className="inline-flex items-center px-3 py-1 bg-lightBlue/20 rounded-full border border-lightBlue/30">
-                        <span className="text-lightBlue text-sm font-medium">24/7 Support</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
 
-                {/* Hover Effect Overlay */}
-                <div className="absolute inset-0 bg-primaryBlue/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-              </div>
-            </div>
-          </div>
-        </div>
+        {/* Service Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {services.map((service, idx) => (
+            <div
+              key={service.id}
+              className={`group relative bg-surface/60 backdrop-blur-sm rounded-2xl border border-borderColor/50 p-7 transition-all duration-500 hover:border-primary/20 hover:bg-surfaceLight/60 hover:-translate-y-1 card-shine ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              style={{ transitionDelay: `${200 + idx * 100}ms` }}
+            >
+              {/* AI Badge */}
+              {(service.id === 5 || service.id === 6) && (
+                <div className="absolute top-5 right-5 px-2.5 py-0.5 bg-primary/10 border border-primary/20 rounded-full">
+                  <span className="text-primary text-[10px] font-pts font-semibold uppercase tracking-wider">AI</span>
+                </div>
+              )}
 
-        {/* Call to Action */}
-        <div className="text-center mt-16">
-          <a
-            href="#pricing"
-            className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-primaryBlue to-lightBlue rounded-xl text-white font-pts font-semibold uppercase tracking-wider shadow-lg shadow-primaryBlue/25 hover:shadow-xl hover:shadow-primaryBlue/40 transition-all duration-300 transform hover:scale-105"
-          >
-            <span>Explore All Services</span>
-            <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-            </svg>
-          </a>
+              {/* Icon */}
+              <div className="w-14 h-14 rounded-xl bg-primary/[0.06] border border-primary/10 flex items-center justify-center text-primary mb-5 group-hover:bg-primary/10 group-hover:border-primary/20 transition-all duration-300">
+                {serviceIcons[service.id]}
+              </div>
+
+              <h3 className="text-white text-xl font-pr font-semibold mb-3 group-hover:text-primary transition-colors duration-300">
+                {service.name}
+              </h3>
+
+              <p className="text-textMuted font-pts text-[15px] leading-relaxed">
+                {service.des}
+              </p>
+
+              {/* Bottom arrow */}
+              <div className="mt-6 flex items-center text-primary/50 group-hover:text-primary transition-colors duration-300">
+                {/* <span className="text-sm font-pts font-medium">Learn more</span> */}
+                {/* <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg> */}
+              </div>
+
+              {/* Hover glow */}
+              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{
+                boxShadow: 'inset 0 1px 0 0 rgba(0,194,255,0.1), 0 0 30px rgba(0,194,255,0.05)'
+              }}></div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
