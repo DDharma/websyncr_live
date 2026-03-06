@@ -42,6 +42,11 @@ const Pricing = () => {
               )}
             >
               {service.name}
+              {service.discount && (
+                <span className="ml-2 px-1.5 py-0.5 bg-success/10 border border-success/20 rounded text-success text-[9px] font-bold">
+                  {service.discount}
+                </span>
+              )}
             </button>
           ))}
         </div>
@@ -64,7 +69,24 @@ const Pricing = () => {
 
                 {/* Price */}
                 <div className="bg-primary/[0.04] rounded-xl p-5 border border-primary/10 mb-6">
-                  <div className="gradient-text text-4xl font-pr font-bold">{selected.startingPrice}</div>
+                  <div className="flex items-center gap-3 mb-1">
+                    {selected.badge && (
+                      <span className="px-2.5 py-0.5 bg-primary/10 border border-primary/20 rounded-full text-primary text-[10px] font-pts font-bold uppercase tracking-wider">
+                        {selected.badge}
+                      </span>
+                    )}
+                    {selected.discount && (
+                      <span className="px-2.5 py-0.5 bg-success/10 border border-success/20 rounded-full text-success text-[10px] font-pts font-bold uppercase tracking-wider">
+                        {selected.discount}
+                      </span>
+                    )}
+                  </div>
+                  <div className="flex items-baseline gap-3 mt-3">
+                    <div className="gradient-text text-4xl font-pr font-bold">{selected.startingPrice}</div>
+                    {selected.originalPrice && (
+                      <span className="text-textMuted/60 text-lg font-pts line-through">{selected.originalPrice}</span>
+                    )}
+                  </div>
                   <div className="flex gap-6 mt-3 text-textMuted text-sm font-pts">
                     <span>Delivery: <span className="text-primary">{selected.deliveryTime}</span></span>
                     <span>Revisions: <span className="text-primary">{selected.revision}</span></span>
