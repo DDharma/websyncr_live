@@ -1,0 +1,52 @@
+/**
+ * Websyncr brand mark — the three-stroke "W", from public/img/logo.svg.
+ *
+ * Inlined rather than loaded as an <img>: it costs no request, cannot shift
+ * layout, and can be tinted or scaled per placement.
+ *
+ * The mark keeps its established brand cyan (`--color-brand`, #00C2FF) exactly
+ * as supplied. It is the only colour on the page from outside the design
+ * system palette, and it is confined to this component. Contrast minimums do
+ * not apply: WCAG 1.4.3 governs text and 1.4.11 governs UI components and
+ * meaningful graphics, while this is a decorative logo sitting beside a
+ * wordmark that carries the name at 14.97:1.
+ *
+ * Each path is drawn twice — an 80%-opacity fill under a 4px stroke — which is
+ * what gives the mark its outlined look in the source file.
+ */
+
+const PATHS = [
+  'M23.1443 2H15.567C8.64353 2 4.31282 9.49069 7.76735 15.4907L24.2904 44.1887C27.6551 50.0326 36.0142 50.2371 39.6607 44.5648L43.6957 38.2881C45.5198 35.4506 45.604 31.8313 43.9139 28.912L30.9332 6.49068C29.3241 3.71132 26.3559 2 23.1443 2Z',
+  'M66.9275 22.8895L42.5929 65.7649C40.9907 68.5877 41.0327 72.0545 42.7026 74.8378L46.8747 81.7913C50.4624 87.7708 59.1937 87.5749 62.5096 81.4405L86.0354 37.9177C87.4704 35.2629 87.4793 32.0656 86.0592 29.4028L82.6959 23.0966C79.3579 16.8379 70.4288 16.7206 66.9275 22.8895Z',
+  'M107.9 2H101.574C94.8012 2 90.4553 9.19853 93.6096 15.1917L101.055 29.3379C102.476 32.0373 102.432 35.2725 100.94 37.9329L72.5188 88.5967C69.1534 94.5961 73.4893 102 80.3681 102H87.9487C91.2643 102 94.3114 100.177 95.8791 97.2554L127.738 37.8812C129.152 35.246 129.165 32.0806 127.772 29.4341L115.864 6.80829C114.308 3.85132 111.241 2 107.9 2Z',
+] as const;
+
+type LogoProps = {
+  className?: string;
+  /**
+   * Decorative by default — the adjacent wordmark supplies the accessible
+   * name. Pass a title only when the mark stands alone.
+   */
+  title?: string;
+};
+
+export function Logo({ className = '', title }: LogoProps) {
+  return (
+    <svg
+      viewBox="0 0 131 104"
+      fill="none"
+      className={className}
+      role={title ? 'img' : undefined}
+      aria-hidden={title ? undefined : true}
+      focusable="false"
+    >
+      {title ? <title>{title}</title> : null}
+      {PATHS.map((d) => (
+        <path key={d} d={d} fill="var(--color-brand)" fillOpacity="0.8" />
+      ))}
+      {PATHS.map((d) => (
+        <path key={`s-${d}`} d={d} stroke="var(--color-brand)" strokeWidth="4" />
+      ))}
+    </svg>
+  );
+}

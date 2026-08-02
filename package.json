@@ -1,32 +1,45 @@
 {
   "name": "websyncr",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
+  "description": "Websyncr — full-stack engineering & AI systems architecture studio. Static marketing site.",
   "engines": {
-    "node": ">=20.x"
+    "node": ">=20.9.0"
   },
+  "//browserslist": "Matched to Tailwind 4's own floor (it needs @property and color-mix), so the JS target cannot be older than the CSS target anyway. Stops Next shipping polyfills for Array.prototype.at and friends.",
+  "browserslist": [
+    "chrome >= 111",
+    "edge >= 111",
+    "firefox >= 128",
+    "safari >= 16.4",
+    "ios_saf >= 16.4"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "verify": "pnpm run typecheck && pnpm run lint && pnpm run build"
   },
   "dependencies": {
-    "autoprefixer": "10.4.16",
-    "classnames": "^2.3.2",
-    "eslint": "8.55.0",
-    "eslint-config-next": "14.0.3",
-    "flowbite": "^2.2.0",
-    "next": "14.0.3",
-    "package.json": "^2.0.1",
-    "postcss": "8.4.32",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-slick": "^0.29.0",
-    "slick-carousel": "^1.8.1",
-    "tailwindcss": "3.3.5"
+    "next": "16.2.12",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.10"
+    "@tailwindcss/postcss": "4.3.3",
+    "@types/node": "^22.20.1",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9.39.0",
+    "eslint-config-next": "16.2.12",
+    "tailwindcss": "4.3.3",
+    "typescript": "^5.9.3"
+  },
+  "packageManager": "pnpm@10.31.0",
+  "//pnpm": "Neither native build is needed: sharp only matters for Image Optimization, which a static export with images.unoptimized never runs, and unrs-resolver ships prebuilt binaries. Declared so installs stay silent and deterministic in CI.",
+  "pnpm": {
+    "ignoredBuiltDependencies": ["sharp", "unrs-resolver"]
   }
 }

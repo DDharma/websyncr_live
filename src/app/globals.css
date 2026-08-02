@@ -1,144 +1,406 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-@import url('https://api.fontshare.com/v2/css?f[]=clash-display@400;500;600;700&f[]=satoshi@400;500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+/* ==========================================================================
+   WEBSYNCR DESIGN SYSTEM — TOKENS
+   Single source of truth. Every value below is lifted from
+   "Websyncr Landing.dc.html". Nothing here is invented.
 
-body {
-  color: #E8EDF5;
-  background: #060B14;
-  scroll-behavior: smooth;
+   Three accessibility corrections are marked A11Y; each one reuses an
+   existing token rather than introducing a new colour:
+     1. Amber text on light surfaces (2.66:1) -> amber fill + void text (6.23:1)
+     2. Inverse text alpha floor raised to 0.50 (4.93:1); DS used 0.32-0.45
+        for a few small labels, which land at 2.73-4.20:1
+     3. Form input borders use `muted` (6.00:1) not `rule` (1.25:1) so the
+        field boundary satisfies WCAG 1.4.11 non-text contrast
+   ========================================================================== */
+
+@theme {
+  /* --- Colour ------------------------------------------------------------ */
+  --color-paper: #f2f4f6; /* light page background */
+  --color-surface: #ffffff; /* card / sheet fill */
+  --color-void: #12151a; /* dark page background */
+  --color-ink: #1b1f27; /* primary text on light */
+  --color-ink-soft: #31363f; /* long-form body text on light */
+  --color-muted: #5b6470; /* secondary text on light */
+  --color-rule: #d8dce1; /* hairlines, card borders on light */
+  --color-blueprint: #3e6690; /* primary accent, focus rings */
+  --color-blueprint-light: #6e93b5; /* diagram strokes on dark */
+  --color-amber: #c98a2c; /* CTA fill, dark-surface accent */
+  --color-inverse: #f2f4f6; /* text on dark (alpha-composited) */
+
+  /* The established Websyncr brand cyan, kept exactly as supplied. This is the
+     one colour outside the DS palette, and it is scoped to the logo mark only
+     — never text, never UI, never a border. Declared here rather than inlined
+     so there is still a single source of truth for it. */
+  --color-brand: #00c2ff;
+
+  /* --- Typeface ---------------------------------------------------------- */
+  --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+
+  /* --- Type scale ---------------------------------------------------------
+     Display (Space Grotesk 600) */
+  --text-h1: clamp(2.125rem, 4.8vw, 3.625rem); /* 34 -> 58 */
+  --text-h1--line-height: 1.08;
+  --text-h1--letter-spacing: -0.01em;
+  --text-h1--font-weight: 600;
+
+  --text-h2: clamp(1.75rem, 3.4vw, 2.625rem); /* 28 -> 42 */
+  --text-h2--line-height: 1.12;
+  --text-h2--letter-spacing: -0.01em;
+  --text-h2--font-weight: 600;
+
+  --text-h2-sm: clamp(1.75rem, 3.4vw, 2.375rem); /* 28 -> 38 (FAQ) */
+  --text-h2-sm--line-height: 1.12;
+  --text-h2-sm--letter-spacing: -0.01em;
+  --text-h2-sm--font-weight: 600;
+
+  --text-h2-lg: clamp(1.75rem, 4vw, 2.75rem); /* 28 -> 44 (closing) */
+  --text-h2-lg--line-height: 1.1;
+  --text-h2-lg--letter-spacing: -0.01em;
+  --text-h2-lg--font-weight: 600;
+
+  --text-h3: 1.375rem; /* 22 — offer card title */
+  --text-h3--line-height: 1.25;
+  --text-h3--font-weight: 600;
+
+  --text-h4: 1.25rem; /* 20 — case-study category heading */
+  --text-h4--line-height: 1.3;
+  --text-h4--font-weight: 600;
+
+  --text-h5: 1.125rem; /* 18 — case card title */
+  --text-h5--line-height: 1.35;
+  --text-h5--font-weight: 600;
+
+  --text-h6: 1.03125rem; /* 16.5 — process step title */
+  --text-h6--line-height: 1.4;
+  --text-h6--font-weight: 600;
+
+  --text-faq-q: 1.0625rem; /* 17 */
+  --text-faq-q--line-height: 1.4;
+  --text-faq-q--font-weight: 600;
+
+  --text-stat: clamp(1.625rem, 3vw, 2.125rem); /* 26 -> 34 */
+  --text-stat--line-height: 1;
+  --text-stat--font-weight: 600;
+
+  /* Body (IBM Plex Sans 400) */
+  --text-lede: clamp(1rem, 1.6vw, 1.1875rem); /* 16 -> 19 */
+  --text-lede--line-height: 1.6;
+  --text-body: 1rem; /* 16 */
+  --text-body--line-height: 1.6;
+  --text-prose: 1.03125rem; /* 16.5 — about copy */
+  --text-prose--line-height: 1.75;
+  --text-card: 0.90625rem; /* 14.5 — card copy */
+  --text-card--line-height: 1.6;
+  --text-answer: 0.96875rem; /* 15.5 — faq answer */
+  --text-answer--line-height: 1.7;
+  --text-note: 0.84375rem; /* 13.5 — process copy */
+  --text-note--line-height: 1.6;
+  --text-mini: 0.8125rem; /* 13 — extras copy */
+  --text-mini--line-height: 1.5;
+
+  /* Mono (IBM Plex Mono 400/500/600) */
+  --text-m2xs: 0.65625rem; /* 10.5 — form caption */
+  --text-m2xs--line-height: 1.4;
+  --text-mxs: 0.6875rem; /* 11 — meta, small labels */
+  --text-mxs--line-height: 1.5;
+  --text-msm: 0.71875rem; /* 11.5 — stat label, founder line */
+  --text-msm--line-height: 1.5;
+  --text-mbase: 0.75rem; /* 12 — nav links, badges */
+  --text-mbase--line-height: 1.4;
+  --text-mmd: 0.78125rem; /* 12.5 — card link, facts table */
+  --text-mmd--line-height: 1.4;
+  --text-mlg: 0.8125rem; /* 13 — hero CTA */
+  --text-mlg--line-height: 1.3;
+  --text-mxl: 0.84375rem; /* 13.5 — closing CTA */
+  --text-mxl--line-height: 1.3;
+  --text-logo: 0.9375rem; /* 15 — wordmark */
+  --text-logo--line-height: 1.2;
+  --text-price: 1.25rem; /* 20 */
+  --text-price--line-height: 1.2;
+  --text-price--font-weight: 600;
+
+  /* --- Tracking ---------------------------------------------------------- */
+  --tracking-tight: -0.01em;
+  --tracking-logo: 0.06em;
+  --tracking-meta: 0.02em;
+  --tracking-cta: 0.03em;
+  --tracking-cta-wide: 0.04em;
+  --tracking-nav: 0.08em;
+  --tracking-sheet: 0.1em;
+
+  /* --- Radii ------------------------------------------------------------- */
+  --radius-tag: 2px; /* buttons, badges */
+  --radius-sheet: 3px; /* cards, frames */
+
+  /* --- Elevation --------------------------------------------------------- */
+  --shadow-sheet: 0 12px 28px rgba(18, 21, 26, 0.08);
+
+  /* --- Layout ------------------------------------------------------------ */
+  --container-sheet: 72.5rem; /* 1160px */
+  --container-column: 50rem; /* 800px  — FAQ measure */
+
+  /* --- Motion ------------------------------------------------------------ */
+  --ease-sheet: cubic-bezier(0.4, 0, 0.2, 1);
+  --animate-dash: dash 0.9s ease forwards;
+  --animate-rise: rise 0.6s ease forwards;
+
+  @keyframes dash {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
 
-.hideScroll::-webkit-scrollbar {
-  display: none;
+/* ==========================================================================
+   DARK SCHEME
+   Follows the operating system via prefers-color-scheme. No toggle, no
+   JavaScript, no localStorage, and therefore no flash of the wrong theme on
+   first paint — the page has no client-side theme state to hydrate.
+
+   Nothing here renames a token. The palette above keeps its DS values and is
+   still the source of truth for light; this block redefines what a handful of
+   *role* tokens resolve to, so every existing utility (`bg-paper`, `text-ink`,
+   `border-rule`) follows automatically. Light mode is byte-identical to before.
+
+   The page alternates light body sections with dark bands (hero, engagement
+   model, process, footer). That rhythm is preserved rather than flattened:
+   `void` stays the deepest surface, `paper` sits one step above it, and
+   `surface` one above that — so the bands still read as bands.
+
+     surface  #222731   L 0.0201   cards
+     paper    #191D24   L 0.0121   page body
+     void     #12151A   L 0.0074   bands (unchanged)
+
+   Measured contrast on the three surfaces (void / paper / surface):
+     ink       #F2F4F6   16.59 / 15.33 / 13.59   body + headings
+     ink-soft  #D5DAE1   13.02 / 12.03 / 10.66   long-form prose
+     muted     #939DAA    6.66 /  6.15 /  5.45   secondary text  (AA >= 4.5)
+     blueprint #6E93B5    5.67 /  5.24 /  4.64   accent, focus ring, prices
+     amber     #C98A2C    6.23 /  5.76 /  5.10   band accents
+   `rule` is a decorative hairline at ~1.3:1, matching light mode's 1.25:1.
+
+   Only four values are new; the rest are existing DS tokens re-pointed.
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Re-pointed to existing DS values */
+    --color-ink: #f2f4f6; /* was --color-inverse */
+    --color-blueprint: #6e93b5; /* was --color-blueprint-light */
+
+    /* New, and only where the DS has no candidate: three surface steps and
+       one secondary-text grey. Each is verified above, not eyeballed. */
+    --color-paper: #191d24;
+    --color-surface: #222731;
+    --color-ink-soft: #d5dae1;
+    --color-muted: #939daa;
+    --color-rule: #2f353f;
+
+    /* A shadow tinted near-black is invisible on a near-black page. Depth in
+       dark comes from the surface steps and the hairline; the shadow only
+       needs to darken the ground beneath a lifted card. */
+    --shadow-sheet: 0 12px 28px rgba(0, 0, 0, 0.55);
+  }
 }
 
-.hideSickAerrow .slick-arrow {
-  display: none !important;
+/* ==========================================================================
+   BASE
+   ========================================================================== */
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    /* Anchor targets clear the sticky nav (57px light / 65px wrapped mobile). */
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+    /* Declared as a property as well as a <meta>, so UA-painted chrome the
+       author cannot style — scrollbars, the native <select> popup, autofill —
+       follows the active scheme instead of staying light on a dark page. */
+    color-scheme: light dark;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-wrap: pretty;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    /* 600 is the only display weight the DS uses. Pinning it here means no
+       heading silently falls back to the UA's bold (700), which would force
+       the browser to synthesise a weight that is never downloaded. */
+    font-weight: 600;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  /* Visible keyboard focus everywhere. Light-surface default; dark surfaces
+     opt into `.focus-inverse` below. Never removed, only restyled. */
+  :focus-visible {
+    outline: 2px solid var(--color-blueprint);
+    outline-offset: 3px;
+    border-radius: 1px;
+  }
+
+  ::selection {
+    background-color: var(--color-blueprint);
+    color: var(--color-paper);
+  }
 }
 
-/* Hover Effects */
-.hover-lift {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.hover-lift:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 40px rgba(0, 194, 255, 0.12);
+/* ==========================================================================
+   UTILITIES
+   ========================================================================== */
+
+/* 40px blueprint grid — dark surfaces only (DS hero + closing sheet). */
+@utility blueprint-grid {
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.05) 0px,
+      rgba(255, 255, 255, 0.05) 1px,
+      transparent 1px,
+      transparent 40px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.05) 0px,
+      rgba(255, 255, 255, 0.05) 1px,
+      transparent 1px,
+      transparent 40px
+    );
 }
 
-/* Glass Effect */
-.glass-effect {
-  background: rgba(12, 18, 32, 0.6);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(0, 194, 255, 0.08);
+/**
+ * Hover tint transition. Deliberately not Tailwind's `transition-colors`,
+ * whose property list includes `outline-color` — that fades the focus ring in
+ * over 150ms instead of showing it the instant the control takes focus.
+ */
+@utility transition-tint {
+  transition-property: color, background-color, border-color, text-decoration-color;
+  transition-timing-function: var(--ease-sheet);
+  transition-duration: 200ms;
 }
 
-/* Primary Gradient */
-.primary-gradient {
-  background: linear-gradient(135deg, #00C2FF 0%, #80E1FF 50%, #00C2FF 100%);
+/**
+ * Focus ring for controls sitting on --color-void.
+ *
+ * `outline-offset` places the ring outside the control, on the surface behind
+ * it — so the ring has to contrast with that surface, not with the control's
+ * own fill. Everything on a light body section is served by the base
+ * `:focus-visible` rule (blueprint, which re-points to blueprint-light in
+ * dark); this variant exists only for controls on the dark bands, where
+ * blueprint would be too close to the background in light mode.
+ */
+@utility focus-inverse {
+  &:focus-visible {
+    outline: 2px solid var(--color-inverse);
+    outline-offset: 3px;
+  }
 }
 
-/* Surface Gradient */
-.surface-gradient {
-  background: linear-gradient(180deg, #0C1220 0%, #060B14 100%);
+/* Centred sheet measure. */
+@utility sheet {
+  margin-inline: auto;
+  width: 100%;
+  max-width: var(--container-sheet);
 }
 
-/* Text Glow */
-.text-glow {
-  text-shadow: 0 0 30px rgba(0, 194, 255, 0.3), 0 0 60px rgba(0, 194, 255, 0.1);
+/* Centred narrow measure (FAQ). */
+@utility column {
+  margin-inline: auto;
+  width: 100%;
+  max-width: var(--container-column);
 }
 
-/* Border Glow */
-.border-glow {
-  box-shadow: 0 0 20px rgba(0, 194, 255, 0.08), 0 0 40px rgba(0, 194, 255, 0.04);
+/**
+ * Scroll-driven reveal, replacing the DS's IntersectionObserver.
+ *
+ * Deliberately CSS-only: no client bundle, no hydration, and content is
+ * never hidden by default — if `animation-timeline` is unsupported, or the
+ * visitor prefers reduced motion, the element simply renders in place.
+ * Stagger comes from `--reveal-step` (an integer index), not a time delay,
+ * because scroll timelines advance on progress rather than time.
+ */
+@utility reveal {
+  --reveal-step: 0;
+
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      animation: rise 1s linear both;
+      animation-timeline: view();
+      animation-range: entry calc(var(--reveal-step) * 7%) entry calc(75% + var(--reveal-step) * 7%);
+    }
+  }
 }
 
-/* Card Shine */
-.card-shine {
-  position: relative;
-  overflow: hidden;
-}
-.card-shine::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    45deg,
-    transparent 40%,
-    rgba(0, 194, 255, 0.03) 50%,
-    transparent 60%
-  );
-  transform: rotate(0deg);
-  transition: transform 0.6s ease;
-  pointer-events: none;
-}
-.card-shine:hover::after {
-  transform: rotate(180deg);
+/**
+ * Hero diagram connector strokes. Time-based (above the fold, runs on load)
+ * exactly as the DS specifies, and inert under reduced motion.
+ */
+@utility draw {
+  stroke-dasharray: 60;
+
+  @media (prefers-reduced-motion: no-preference) {
+    stroke-dashoffset: 60;
+    animation: dash 0.9s ease forwards;
+  }
 }
 
-/* Mesh Gradient Background */
-.mesh-gradient {
-  background:
-    radial-gradient(ellipse at 20% 50%, rgba(0, 194, 255, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 20%, rgba(128, 225, 255, 0.06) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 80%, rgba(0, 144, 204, 0.05) 0%, transparent 50%);
-}
+/* ==========================================================================
+   MOTION — every animation is opt-out via prefers-reduced-motion.
+   ========================================================================== */
 
-/* Custom Scrollbar */
-.custom-scrollbar::-webkit-scrollbar {
-  width: 3px;
-}
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: rgba(26, 38, 64, 0.3);
-  border-radius: 2px;
-}
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #00C2FF;
-  border-radius: 2px;
-}
-
-/* Hide Scrollbar */
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-
-/* Line Clamp */
-.line-clamp-2 {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-/* Section Divider */
-.section-divider {
-  position: relative;
-}
-.section-divider::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, #00C2FF 50%, transparent 100%);
-  opacity: 0.3;
-}
-
-/* Gradient Text */
-.gradient-text {
-  background: linear-gradient(135deg, #00C2FF 0%, #80E1FF 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
