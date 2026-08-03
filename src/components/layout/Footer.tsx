@@ -1,23 +1,18 @@
+/**
+ * Closing CTA sheet and footer; the Websyncr wordmark is the masthead here.
+ * Founder credit sits at inverse/60 — the lowest alpha that still passes 1.4.3.
+ */
+
 import { CtaButton } from '@/components/ui/CtaButton';
 import { Wordmark } from '@/components/ui/Wordmark';
 import { site, founder, links, primaryCta, externalLinkProps } from '@/lib/site';
 
-/**
- * Closing sheet + footer.
- *
- * Brand hierarchy: the Websyncr wordmark is the masthead here. The founder
- * credit sits in an 11px mono line at inverse/60 — legible (6.55:1) but
- * deliberately subordinate. The DS specified inverse/35, which measures
- * 3.03:1 and fails WCAG 1.4.3 for body text, so the alpha is raised to the
- * lowest value in the scale that passes.
- */
 export function Footer() {
   const year = 2026;
 
   return (
     <footer className="bg-void px-6 pt-20 pb-8 text-inverse">
       <div className="sheet">
-        {/* Closing CTA */}
         <div className="mb-8 border-b border-white/14 pb-14 text-center">
           <h2 className="mx-auto mb-7 max-w-[26ch] text-h2-lg font-display">Ready to scope it?</h2>
           <CtaButton href={primaryCta.href} variant="amber" size="lg" className="uppercase">
@@ -25,7 +20,6 @@ export function Footer() {
           </CtaButton>
         </div>
 
-        {/* Utility row */}
         <div className="flex flex-wrap items-start justify-between gap-5 font-mono text-mbase">
           <div className="flex flex-col gap-4">
             <Wordmark tone="inverse" />
@@ -63,7 +57,6 @@ export function Footer() {
           </p>
         </div>
 
-        {/* Founder credit — subordinate to the Websyncr masthead above */}
         <p className="mt-6 font-mono text-mxs text-inverse/60">
           © {year} {site.name}. Every engagement led personally by{' '}
           <a

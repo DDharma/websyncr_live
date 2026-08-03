@@ -1,3 +1,8 @@
+/**
+ * Home page composition — the single-page section order, top to bottom.
+ * The skip link precedes Nav so keyboard focus reaches it first.
+ */
+
 import { Nav } from '@/components/layout/Nav';
 import { Footer } from '@/components/layout/Footer';
 import { Hero } from '@/components/sections/Hero';

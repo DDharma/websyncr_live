@@ -1,15 +1,12 @@
+/**
+ * Sticky masthead. No hamburger and no JavaScript: below `md` the anchor row
+ * drops to its own hairline-separated line, so no disclosure state can stick.
+ */
+
 import { Wordmark } from '@/components/ui/Wordmark';
 import { CtaButton } from '@/components/ui/CtaButton';
 import { nav, primaryCta } from '@/lib/site';
 
-/**
- * Sticky masthead.
- *
- * No hamburger and no JavaScript: below `md` the anchor row drops onto its own
- * hairline-separated second line, which is the DS's own flex-wrap behaviour
- * made explicit. Every link stays reachable by tap and by keyboard at all
- * widths, and there is no disclosure state to get stuck open.
- */
 export function Nav() {
   return (
     <header className="sticky top-0 z-50 border-b border-rule bg-paper/92 backdrop-blur-md">
@@ -19,7 +16,6 @@ export function Nav() {
             <Wordmark />
           </a>
 
-          {/* Desktop anchor row */}
           <ul className="hidden list-none items-center gap-7 md:flex">
             {nav.map((item) => (
               <li key={item.href}>
@@ -38,7 +34,6 @@ export function Nav() {
           </CtaButton>
         </div>
 
-        {/* Mobile anchor row — same links, second line */}
         <ul className="-mx-6 flex list-none flex-wrap items-center gap-x-5 gap-y-2 border-t border-rule px-6 py-[10px] md:hidden">
           {nav.map((item) => (
             <li key={item.href}>

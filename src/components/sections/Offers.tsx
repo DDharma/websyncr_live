@@ -1,18 +1,13 @@
+/**
+ * Four fixed-price engagements in two columns, not three: a price range at
+ * 20px mono is wider than a third of the sheet once card padding is subtracted.
+ */
+
 import { Section, SectionHeading } from '@/components/ui/Section';
 import { Sheet } from '@/components/ui/Sheet';
 import { offers, hourlyRate } from '@/content/content';
 import { links, externalLinkProps } from '@/lib/site';
 
-/**
- * Four fixed-price engagements.
- *
- * Two columns rather than three: the price line now carries a range
- * ("$15,000 – $22,000") at 20px mono, which is wider than a third of the
- * 1160px sheet once card padding is subtracted. Three columns would clip it.
- *
- * Payment terms are per-offer, not global — the two small fixed-fee
- * engagements bill up front, the two builds are 50/50.
- */
 export function Offers() {
   return (
     <Section id="offers">
@@ -27,16 +22,9 @@ export function Offers() {
       <ul className="grid list-none grid-cols-1 gap-6 md:grid-cols-2">
         {offers.map((offer) => (
           <Sheet as="li" key={offer.num} interactive className="flex flex-col gap-4 p-8">
-            {/* Tag shares the title's row rather than sitting in a reserved
-                row above it, so every card's title starts at the same height
-                with no empty strip on the untagged ones. `shrink-0` makes a
-                long title wrap instead of squeezing the badge. */}
             <div className="flex items-start justify-between gap-3">
               <h3 className="text-h3 font-display text-ink">{offer.name}</h3>
               {offer.tag ? (
-                // Amber as a fill with void text (6.23:1). Amber *text* on a
-                // white surface is 2.93:1, so the tag colour is inverted here
-                // rather than dropped.
                 <span className="mt-1 shrink-0 rounded-tag bg-amber px-2 py-0.75 font-mono text-mxs tracking-nav font-semibold text-void uppercase">
                   {offer.tag}
                 </span>
@@ -65,9 +53,6 @@ export function Offers() {
         ))}
       </ul>
 
-      {/* Hourly is deliberately a footnote, not a fifth card: it exists for
-          work too small to scope, and giving it card parity would undercut the
-          fixed-price argument the section just made. */}
       <p className="mt-8 max-w-[68ch] font-mono text-mmd text-muted">
         <span className="text-ink">{hourlyRate.rate}</span> - {hourlyRate.note}
       </p>

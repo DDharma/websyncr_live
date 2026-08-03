@@ -1,3 +1,7 @@
+/**
+ * Static robots.txt, emitted at build time rather than per request.
+ */
+
 import type { MetadataRoute } from 'next';
 import { site } from '@/lib/site';
 

@@ -1,18 +1,12 @@
+/**
+ * Root layout: page metadata, viewport, and self-hosted fonts via next/font.
+ * Weights are trimmed to what the markup renders — 4 woff2 files instead of 9.
+ */
+
 import type { Metadata, Viewport } from 'next';
 import { Space_Grotesk, IBM_Plex_Sans, IBM_Plex_Mono } from 'next/font/google';
 import { site } from '@/lib/site';
 import './globals.css';
-
-/* --------------------------------------------------------------------------
-   Typefaces - self-hosted at build time by next/font. No runtime request to
-   Google, no render-blocking stylesheet, no layout shift (fallback metrics are
-   matched automatically).
-
-   Weights are trimmed to the ones the page actually renders, verified against
-   the markup rather than copied from the DS's font link: Space Grotesk 600
-   (every heading), Plex Sans 400 (all body copy), Plex Mono 400 + 600 (labels,
-   and the semibold wordmark/CTA/tag). That is 4 woff2 files instead of 9.
-   -------------------------------------------------------------------------- */
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -35,8 +29,6 @@ const plexMono = IBM_Plex_Mono({
   variable: '--font-plex-mono',
 });
 
-/* -------------------------------------------------------------------------- */
-
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
@@ -45,9 +37,6 @@ export const metadata: Metadata = {
   },
   description: site.description,
   applicationName: site.name,
-  // Google has ignored this since 2009; it is kept because some AI crawlers and
-  // smaller engines still read it, and it costs nothing. Terms match what
-  // buyers actually search rather than how the studio describes itself.
   keywords: [
     'hire AI developer',
     'RAG development services',
@@ -112,14 +101,9 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   themeColor: [
-    // The masthead is the topmost surface, so the browser chrome matches paper
-    // in whichever scheme is active.
     { media: '(prefers-color-scheme: light)', color: '#F2F4F6' },
     { media: '(prefers-color-scheme: dark)', color: '#191D24' },
   ],
-  // Both schemes are supported, so the UA styles form controls, scrollbars and
-  // the like to match. Declaring only `light` here would leave native widgets
-  // rendering light on a dark page.
   colorScheme: 'light dark',
 };
 

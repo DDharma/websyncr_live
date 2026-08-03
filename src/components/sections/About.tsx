@@ -1,3 +1,8 @@
+/**
+ * Founder credit sheet plus the at-a-glance facts table.
+ * The role is an h3 under the section h2, keeping the person below the studio.
+ */
+
 import { SectionHeading } from '@/components/ui/Section';
 import { Sheet } from '@/components/ui/Sheet';
 import { aboutParagraphs, titleBlock } from '@/content/content';
@@ -6,14 +11,6 @@ import { founder, externalLinkProps } from '@/lib/site';
 const PROFILE_LINK =
   'font-mono text-mmd text-ink uppercase underline underline-offset-4 hover:text-blueprint motion-safe:transition-tint';
 
-/**
- * Founder credit sheet.
- *
- * Dharmvir is named here as Founder & Lead Architect — the one place on the
- * page where the person, not the studio, leads the heading hierarchy. It is an
- * h3 under the section h2 so it stays below the Websyncr masthead in outline
- * order as well as in visual weight.
- */
 export function About() {
   return (
     <section id="about" aria-labelledby="about-heading" className="bg-paper px-6 py-24 text-ink">
@@ -57,7 +54,6 @@ export function About() {
           </ul>
         </div>
 
-        {/* At-a-glance engagement facts */}
         <Sheet className="min-w-0 flex-[0_1_340px] self-start p-7">
           <dl className="m-0 grid grid-cols-[auto_1fr] gap-x-4 gap-y-2.5 font-mono text-mmd">
             {titleBlock.map(([label, value]) => (

@@ -1,17 +1,17 @@
+/**
+ * White card surface plus the two case-study topology glyphs.
+ * `interactive` adds the lift-on-hover elevation used by the offer cards.
+ */
+
 import type { ReactNode } from 'react';
 
 type SheetProps = {
   children: ReactNode;
-  /** Lift-on-hover, per the DS offer cards. */
   interactive?: boolean;
   className?: string;
   as?: 'div' | 'li' | 'article';
 };
 
-/**
- * White card surface — the primary content container.
- * 1px rule border, 3px radius, hover elevation on interactive variants.
- */
 export function Sheet({
   children,
   interactive = false,
@@ -31,11 +31,6 @@ export function Sheet({
   );
 }
 
-/* -------------------------------------------------------------------------- */
-/* Node glyphs — the DS case-study icons                                      */
-/* -------------------------------------------------------------------------- */
-
-/** Three-circle topology mark — independent client delivery. */
 export function CircuitGlyph() {
   return (
     <svg width="44" height="28" viewBox="0 0 44 28" aria-hidden="true" focusable="false" className="shrink-0">
@@ -49,7 +44,6 @@ export function CircuitGlyph() {
   );
 }
 
-/** Three-node block topology mark — enterprise architecture. */
 export function BlockGlyph() {
   return (
     <svg width="44" height="28" viewBox="0 0 44 28" aria-hidden="true" focusable="false" className="shrink-0">

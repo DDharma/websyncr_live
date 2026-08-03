@@ -1,18 +1,10 @@
+/**
+ * Verified-figures bar as a description list — dt → dd in DOM, flipped by flex.
+ * The platform qualifier inside each label is load-bearing; do not trim it.
+ */
+
 import { stats } from '@/content/content';
 
-/**
- * Verified-figures bar.
- *
- * The qualifier on the 50+ and $6.8M+ figures is load-bearing and lives in the
- * labels themselves — both state that the numbers come from an AI hiring
- * platform that was architected and built, not from a personal client count.
- * Do not shorten those two labels; they are the only thing keeping those
- * figures from reading as a direct client tally.
- *
- * Marked up as a description list — term is the metric, definition is the
- * figure. DOM order is dt → dd for assistive tech; flex `order` puts the
- * figure on top visually.
- */
 export function ProofBar() {
   return (
     <section

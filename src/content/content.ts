@@ -1,28 +1,10 @@
 /**
- * All page copy. Verified facts only — every figure below is one of the
- * approved stats, and no client name, testimonial, or metric is invented.
- * Confidential engagements are labelled "Confidential Client", never a
- * placeholder brand name.
- *
- * There are deliberately NO testimonials in this file. The predecessor site at
- * websyncr.in carried eight named quotes that could not be verified (one of
- * them credited the work to a different person entirely), so none were carried
- * across. If real, attributed quotes become available they can be added; until
- * then the proof on this page is the stats, the case studies, and the record.
+ * All page copy. Verified facts only — no invented client, testimonial, or
+ * metric, and no testimonials at all until real attributed quotes exist.
  */
-
-/* -------------------------------------------------------------------------- */
-/* Proof bar                                                                  */
-/* -------------------------------------------------------------------------- */
 
 export type Stat = { value: string; label: string };
 
-/**
- * The 50+ and $6.8M+ labels carry a mandatory qualifier: both figures come from
- * an AI hiring platform that was architected and built, not from a count of
- * direct freelance clients. That wording is the only thing distinguishing them
- * from a personal client tally, so it must not be trimmed for brevity.
- */
 export const stats: readonly Stat[] = [
   { value: '6', label: 'Years senior full-stack & AI systems experience' },
   {
@@ -30,33 +12,18 @@ export const stats: readonly Stat[] = [
     label: 'Enterprise clients architected for, via an AI hiring platform he built',
   },
   { value: '$6.8M+', label: 'Enterprise pipeline generated on that same platform' },
-  // "Reduction in delivery / hiring turnaround" left the figure unattached to
-  // anything. Same platform as the two figures beside it, so say so.
   { value: '90%', label: 'Faster hiring and delivery turnaround on that platform' },
-  // The only claim on this page a visitor can check in thirty seconds, so it
-  // points at itself. Worth more than a figure they have to take on faith.
   { value: '95+', label: 'Lighthouse performance on delivery - including this page' },
 ];
 
-/* -------------------------------------------------------------------------- */
-/* Engagement model — the positioning claim the pricing rests on              */
-/* -------------------------------------------------------------------------- */
-
-/**
- * Deliberately a policy, not a calendar. A dated "next slot opens March" line
- * is a stronger scarcity signal but is stale the moment it passes, and a stale
- * date on a page selling delivery discipline undoes more than it buys.
- */
 export const engagementModel = {
-  headline: 'One project at a time.',
-  // Four short sentences instead of two long ones. The original ran a 38-word
-  // sentence with three subordinate clauses, which is where a reader skims.
-  body: 'I take a single engagement at a time. Not one per team - one, full stop. While your build is running, no second client is competing for the same hours. Nobody more junior quietly picks it up when something urgent lands. The person who scopes your system is the person who architects it, writes it, and hands it over.',
+  headline: 'One build at a time.',
+  body: 'I take a single build at a time. Not one per team - one, full stop. While your build is running, no second client is competing for the same hours. Nobody more junior quietly picks it up when something urgent lands. The person who scopes your system is the person who architects it, writes it, and hands it over. Care Plans are the one thing that runs alongside: maintaining a system that already shipped is not a project, so it never takes the slot.',
   points: [
     {
       title: 'No parallel work',
       description:
-        'Your build is the only build. That is the whole reason a three-week sprint can actually take three weeks.',
+        'Your build is the only build - no second build runs beside it. That is the whole reason a three-week sprint can actually take three weeks.',
     },
     {
       title: 'No bench, no handoffs',
@@ -71,34 +38,16 @@ export const engagementModel = {
   ],
 } as const;
 
-/* -------------------------------------------------------------------------- */
-/* Engagements — fixed-price, priced against 2026 market rates                */
-/* -------------------------------------------------------------------------- */
-
 export type Offer = {
   num: string;
   name: string;
   price: string;
-  /** Duration / billing qualifier shown under the price. */
   meta: string;
   tag: string | null;
   description: string;
   terms: string;
 };
 
-/**
- * Pricing is anchored to 2026 market data for this segment, not to a cost-plus
- * calculation. Reference points at time of writing: senior LLM/RAG freelance
- * $175-250/hr; boutique consultancies $150-250/hr; agency fixed-price MVPs
- * $30-55k; production RAG builds $55-90k; fixed-price technical audits from
- * ~$4,900. These numbers land ~40-50% under a US boutique, which is what a
- * solo operator with no agency overhead can defend.
- *
- * There are no discounts, no struck-through anchor prices, and no "% OFF"
- * badges anywhere in this file. That is intentional: a permanent markdown
- * argues the real price is fiction, and nobody buying a $35k AI system is
- * shopping for a coupon.
- */
 export const offers: readonly Offer[] = [
   {
     num: '01',
@@ -113,12 +62,9 @@ export const offers: readonly Offer[] = [
   {
     num: '02',
     name: '3-Week MVP Sprint',
-    price: '$15,000 – $22,000',
+    price: '$18,000 – $25,000',
     meta: 'Three weeks · fixed scope',
     tag: null,
-    // "Roughly half what an agency charges" was an unverifiable comparative.
-    // The market range is a fact the buyer can check against their own quotes,
-    // which is more persuasive than a claim about me.
     description:
       'Idea to deployed product in three weeks. Full-stack build, no scope creep, no bench of subcontractors. Agencies quote $30,000-$55,000 for comparable fixed-price scope; the difference is overhead, not engineering.',
     terms: '50% to start · 50% on delivery',
@@ -126,7 +72,7 @@ export const offers: readonly Offer[] = [
   {
     num: '03',
     name: 'AI / RAG System Build',
-    price: '$18,000 – $35,000',
+    price: '$25,000 – $45,000',
     meta: 'Four to eight weeks · fixed scope',
     tag: null,
     description:
@@ -143,17 +89,22 @@ export const offers: readonly Offer[] = [
       'A stalled build gets a full read of the codebase, architecture, and deploy path, then a prioritised plan to ship it. No blame narrative and no rewrite-everything pitch. Remediation is quoted separately from what the audit finds.',
     terms: '100% up front · remediation quoted separately',
   },
+  {
+    num: '05',
+    name: 'AI Systems Care Plan',
+    price: '$3,500 – $6,000',
+    meta: 'Per month · 3-month minimum · two clients maximum',
+    tag: 'Ongoing',
+    description:
+      'An LLM system is not a set-and-forget asset. Models get deprecated, prompts drift, retrieval quality decays as your corpus grows, and API contracts change under you. This covers monitoring, evaluation, prompt and retrieval tuning, dependency and model upgrades, and a guaranteed response window when something breaks. Runs alongside an active build — maintenance is not a project, so it does not take the one slot.',
+    terms: 'Monthly · 30 days notice · cancel any time after month three',
+  },
 ];
 
-/** Advisory and small scoped fixes, where a fixed number would just be padding. */
 export const hourlyRate = {
-  rate: '$125/hr',
+  rate: '$175/hr',
   note: 'Advisory, audits, and scoped fixes too small to run as a sprint. Fixed price is the default; this is the exception.',
 } as const;
-
-/* -------------------------------------------------------------------------- */
-/* Capabilities — what gets built, carried across from websyncr.in            */
-/* -------------------------------------------------------------------------- */
 
 export type Capability = {
   name: string;
@@ -162,27 +113,22 @@ export type Capability = {
   stack: readonly string[];
 };
 
-/**
- * These are capabilities, not engagement models — they describe what the
- * systems above are made of. Kept deliberately below the priced engagements so
- * that commodity work (WordPress, standalone cloud management) does not sit at
- * the same visual weight as a $35k AI build, while still being findable by the
- * clients who arrive looking for exactly that.
- */
 export const capabilities: readonly Capability[] = [
   {
     name: 'AI & LLM Systems',
-    years: '2+ yrs',
-    description:
-      'Retrieval-augmented generation over your own domain: document processing, custom knowledge bases, and LLM integrations that return answers you can trace back to a source.',
-    stack: ['RAG pipelines', 'Vector databases', 'Prompt engineering', 'LLM fine-tuning'],
-  },
-  {
-    name: 'Conversational AI',
     years: '4+ yrs',
     description:
-      'Chat agents that handle real inquiries and know when to stop. Clean human handoff, analytics on what they get wrong, and retraining from your own transcripts.',
-    stack: ['Multi-channel bots', 'Human handoff', 'Conversation analytics', 'Continuous learning'],
+      'Retrieval-augmented generation over your own domain: document processing, custom knowledge bases, and LLM integrations that return answers you can trace back to a source. Includes chat agents that handle real inquiries, know when to stop, and hand off cleanly to a human.',
+    stack: [
+      'RAG pipelines',
+      'Vector databases',
+      'Prompt engineering',
+      'LLM fine-tuning',
+      'Multi-channel bots',
+      'Human handoff',
+      'Conversation analytics',
+      'Continuous learning',
+    ],
   },
   {
     name: 'Web Applications',
@@ -205,22 +151,10 @@ export const capabilities: readonly Capability[] = [
       'AWS infrastructure sized to what you actually run, not to a reference architecture. Provisioning, hardening, and cost work on existing accounts as well as new ones.',
     stack: ['EC2', 'S3', 'RDS', 'Route 53', 'Amplify'],
   },
-  {
-    name: 'WordPress & WooCommerce',
-    years: '4+ yrs',
-    description:
-      'Custom themes and stores built to be maintained rather than fought with - no page-builder sprawl, and a checkout that survives its first real traffic.',
-    stack: ['Custom themes', 'WooCommerce', 'Elementor', 'Plugin development'],
-  },
 ];
-
-/* -------------------------------------------------------------------------- */
-/* Work — two clearly separated categories                                    */
-/* -------------------------------------------------------------------------- */
 
 export type CaseStudy = { title: string; meta: string; description: string };
 
-/** Independent client delivery. Every client is under NDA. */
 export const independentWork: readonly CaseStudy[] = [
   {
     title: 'Food Delivery Marketplace Platform',
@@ -236,7 +170,6 @@ export const independentWork: readonly CaseStudy[] = [
   },
 ];
 
-/** Enterprise architecture and technical leadership. */
 export const enterpriseWork: readonly CaseStudy[] = [
   {
     title: 'EMB Talent Platform',
@@ -284,10 +217,6 @@ export const additionalSystems: readonly AdditionalSystem[] = [
   },
 ];
 
-/* -------------------------------------------------------------------------- */
-/* Process                                                                    */
-/* -------------------------------------------------------------------------- */
-
 export type ProcessStep = { num: string; title: string; description: string };
 
 export const processSteps: readonly ProcessStep[] = [
@@ -319,32 +248,23 @@ export const processSteps: readonly ProcessStep[] = [
   },
 ];
 
-/* -------------------------------------------------------------------------- */
-/* FAQ                                                                        */
-/* -------------------------------------------------------------------------- */
-
 export type Faq = { question: string; answer: string };
 
-/**
- * Ordered by buyer intent, not by topic. Cost is the first thing a serious
- * visitor wants confirmed and the most-searched question in this category, so
- * it leads; risk questions sit in the middle; logistics close.
- *
- * Questions are phrased the way someone would actually type them. This block
- * is emitted as FAQPage structured data, and both search engines and LLM
- * retrieval lift question/answer pairs verbatim — so each answer is written to
- * stand on its own without the surrounding page.
- */
 export const faqs: readonly Faq[] = [
   {
     question: 'How much does it cost to build an AI or RAG system?',
     answer:
-      'Here, $18,000 to $35,000 for a production RAG system, and $15,000 to $22,000 for a three-week full-stack MVP. For comparison, agencies quote $55,000 to $90,000 for a production RAG build and $30,000 to $55,000 for a fixed-price MVP. The gap is overhead rather than engineering: there is no account manager, no project manager, and no bench between you and the person writing the code.',
+      'Here, $25,000 to $45,000 for a production RAG system, and $18,000 to $25,000 for a three-week full-stack MVP. For comparison, agencies quote $55,000 to $90,000 for a production RAG build and $30,000 to $55,000 for a fixed-price MVP. The gap is overhead rather than engineering: there is no account manager, no project manager, and no bench between you and the person writing the code.',
   },
   {
-    question: 'You only take one project at a time. What if you are already building something?',
+    question: 'Who do you work with?',
     answer:
-      'Then I tell you the real start date on the call. You go on a short list rather than paying a deposit to sit in a queue behind someone else, and if the timing genuinely does not work for you I will say so instead of stretching to fit.',
+      'Websyncr works with seed to Series A startups in the US and EU, typically five to fifty people, that have a document, retrieval, or workflow problem worth solving properly. The best fit is a founder or technical lead who wants one senior engineer accountable end to end rather than an agency team. It is a poor fit for pre-idea projects with no budget, for staff augmentation billed by the hour, and for anyone who needs a full delivery team rather than a single architect.',
+  },
+  {
+    question: 'You only take one build at a time. What if you are already building something?',
+    answer:
+      'Then I tell you the real start date on the call. You go on a short list rather than paying a deposit to sit in a queue behind someone else, and if the timing genuinely does not work for you I will say so instead of stretching to fit. Care Plans are counted separately - maintaining a system that already shipped runs alongside a build, so an active Care Plan never blocks a new one.',
   },
   {
     question: 'Why does discovery cost money?',
@@ -362,9 +282,6 @@ export const faqs: readonly Faq[] = [
       'It happens. Any change that expands the original scope gets a short, explicit add-on quote before I touch it - never a surprise on the final invoice.',
   },
   {
-    // POLICY COMMITMENT — this promises specific behaviour if an engagement
-    // ends early. It is the strongest trust signal on the page precisely
-    // because it is concrete, so it must stay true to how you actually work.
     question: 'What if the build goes wrong?',
     answer:
       'You hold the code and the deploy access from the first milestone, not at handover, so you are never carrying an invoice with nothing to show for it. If we stop mid-build for any reason, you keep everything already paid for, plus a written handover of exactly where the work stands and what comes next. I would rather pass on a clean state than defend a balance.',
@@ -377,7 +294,12 @@ export const faqs: readonly Faq[] = [
   {
     question: 'What happens after the sprint ends?',
     answer:
-      'You get the full handover - code, docs, deploy access. If you want ongoing work, we scope it as its own fixed-price engagement. No auto-renewing retainer.',
+      'You get the full handover - code, docs, deploy access. If you want ongoing work, we scope it as its own fixed-price engagement, or you move onto the AI Systems Care Plan for monitoring and maintenance. Neither is automatic and neither is assumed: nothing renews unless you ask for it.',
+  },
+  {
+    question: 'Do you offer ongoing support after launch?',
+    answer:
+      'Yes. The Websyncr AI Systems Care Plan runs $3,500 to $6,000 per month and covers monitoring, evaluation, prompt and retrieval tuning, dependency and model upgrades, and a guaranteed response window when something breaks. It exists because an LLM system is not a set-and-forget asset: models get deprecated, prompts drift, and retrieval quality decays as the corpus grows. There is a three-month minimum and thirty days notice to cancel after that, and only two Care Plan clients are taken at a time so the response window stays real.',
   },
   {
     question: 'Where are you based? What about timezone overlap?',
@@ -386,40 +308,22 @@ export const faqs: readonly Faq[] = [
   },
 ];
 
-/* -------------------------------------------------------------------------- */
-/* About                                                                      */
-/* -------------------------------------------------------------------------- */
-
-/**
- * Opens with a self-contained "X is Y" sentence naming the person, the role,
- * the studio, and the location. That is the sentence a search engine or an LLM
- * lifts to answer "who is Websyncr", so it should not need surrounding context
- * to make sense.
- */
 export const aboutParagraphs: readonly string[] = [
   'I’m Dharmvir Dharmacharya, Founder & Lead Architect at Websyncr, a solo engineering studio based in Gurugram, India. There’s no bench of unnamed contractors - when we talk, you’re talking to the person who architects and builds your system, personally.',
-  // Was a single 47-word sentence. Split at the natural pivot between the two
-  // halves of the career, which is also the point the reader needs to pause.
   'Over six years I’ve worked both sides of this. As an independent contractor, shipping production apps for clients who need to stay confidential. As a technical lead and architect, building the platforms and AI systems inside a fast-moving company - including one used by 50+ enterprise clients.',
-  'I take one engagement at a time, at a fixed scope and a fixed price, because ambiguity and divided attention are where projects die. You get a plan, a fixed number, and milestone check-ins until it ships.',
+  'I take one build at a time, at a fixed scope and a fixed price, because ambiguity and divided attention are where projects die. You get a plan, a fixed number, and milestone check-ins until it ships.',
 ];
 
-/** At-a-glance facts table on the About card. */
 export const titleBlock: readonly [string, string][] = [
   ['Name', 'Dharmvir Dharmacharya'],
   ['Role', 'Founder & Lead Architect'],
   ['Studio', 'Websyncr'],
   ['Location', 'Gurugram, India'],
   ['Overlap', 'US / UK / AU hours'],
-  ['Capacity', 'One project at a time'],
+  ['Capacity', 'One build at a time · up to 2 care plans'],
   ['Terms', '50% / 50%, fixed price'],
 ];
 
-/* -------------------------------------------------------------------------- */
-/* Contact — static, outbound-only                                            */
-/* -------------------------------------------------------------------------- */
-
-/** Fields collected by the on-page brief builder (composes a mailto). */
 export const briefFields = [
   {
     id: 'name',
@@ -446,6 +350,7 @@ export const briefFields = [
       '3-Week MVP Sprint',
       'AI / RAG System Build',
       'Rescue Audit',
+      'AI Systems Care Plan',
       'Not sure yet',
     ],
     required: true,

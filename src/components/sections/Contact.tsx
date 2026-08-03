@@ -7,19 +7,14 @@ import { briefFields } from '@/content/content';
 import { site, links, primaryCta, externalLinkProps } from '@/lib/site';
 
 /**
- * Secondary conversion path: a short project brief.
- *
- * There is no backend, by design. The form composes a pre-filled email in the
- * visitor's own mail client — nothing is transmitted to a server, so there is
- * no data to store or leak. The two always-visible outbound links (Google Form,
- * direct email) mean visitors without JavaScript are never stranded.
- *
- * Input borders use `muted` (6.00:1) rather than `rule` (1.25:1) so the field
- * boundary satisfies WCAG 1.4.11 non-text contrast.
+ * Project brief that composes a pre-filled mailto — no backend, nothing stored.
+ * Field borders use `muted` (6.00:1), not `rule`, to satisfy WCAG 1.4.11.
  */
 
 const FIELD_BASE =
-  'w-full rounded-tag border border-muted bg-surface px-3.5 py-2.5 font-sans text-card text-ink placeholder:text-muted/80 focus-visible:border-blueprint';
+  'w-full rounded-tag border border-muted bg-surface px-3.5 py-2.5 font-sans text-card text-ink placeholder:text-muted/80 hover:border-ink-soft focus-visible:border-blueprint motion-safe:transition-tint';
+
+const SELECT_FIELD = `${FIELD_BASE} cursor-pointer appearance-none pr-10 invalid:text-muted/80`;
 
 export function Contact() {
   const [status, setStatus] = useState<string | null>(null);
@@ -60,15 +55,11 @@ export function Contact() {
             Rather send details first?
           </SectionHeading>
           <p className="mb-8 max-w-[54ch] text-body text-muted">
-            {/* Wording stays layout-agnostic: the form sits alongside this
-                column at lg and above, and below it at narrower widths. */}
             The 20-minute discovery call is the fastest route to a fixed number - book it and the
             proposal follows within 24–48 hours. If you would rather write it down, the project
             brief opens a pre-filled email in your own mail client. Nothing is sent to a server.
           </p>
 
-          {/* Secondary action stacks under the primary CTA rather than sitting
-              beside it, so there is one obvious next step. */}
           <div className="flex flex-col items-start gap-4">
             <CtaButton href={primaryCta.href} variant="ink" size="md" className="uppercase">
               {primaryCta.label}
@@ -119,20 +110,42 @@ export function Contact() {
                         <span className="sr-only">(required)</span>
                       </>
                     ) : (
-                      // Full `muted` (6.00:1), not an alpha of it — at 70% the
-                      // composite drops to 3.6:1 and fails WCAG 1.4.3.
                       <span className="text-muted"> (optional)</span>
                     )}
                   </label>
 
                   {field.type === 'select' ? (
-                    <select id={id} name={field.id} required={field.required} className={FIELD_BASE}>
-                      {field.options.map((option) => (
-                        <option key={option} value={option}>
-                          {option}
+                    <div className="relative">
+                      <select
+                        id={id}
+                        name={field.id}
+                        required={field.required}
+                        defaultValue=""
+                        className={SELECT_FIELD}
+                      >
+                        <option value="" disabled>
+                          Select an engagement
                         </option>
-                      ))}
-                    </select>
+                        {field.options.map((option) => (
+                          <option key={option} value={option}>
+                            {option}
+                          </option>
+                        ))}
+                      </select>
+                      <svg
+                        viewBox="0 0 12 8"
+                        aria-hidden="true"
+                        className="pointer-events-none absolute top-1/2 right-3.5 h-2 w-3 -translate-y-1/2 text-muted"
+                      >
+                        <path
+                          d="M1 1.5 6 6.5 11 1.5"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.5"
+                          strokeLinecap="square"
+                        />
+                      </svg>
+                    </div>
                   ) : field.type === 'textarea' ? (
                     <textarea
                       id={id}
@@ -169,7 +182,6 @@ export function Contact() {
             Opens your mail client. No data is stored or transmitted by this site.
           </p>
 
-          {/* Polite live region so the outcome is announced, not just visual. */}
           <p role="status" aria-live="polite" className="mt-2 font-mono text-mxs text-blueprint">
             {status}
           </p>

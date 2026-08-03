@@ -1,17 +1,11 @@
+/**
+ * The one-project-at-a-time claim the pricing rests on, so it precedes Offers.
+ * Reuses Section's void tone rather than introducing a new surface.
+ */
+
 import { Section, SectionHeading } from '@/components/ui/Section';
 import { engagementModel } from '@/content/content';
 
-/**
- * The positioning claim the pricing rests on.
- *
- * Uses `Section`'s existing `tone="void"` variant rather than introducing a new
- * surface — the DS already alternates light body sections with dark bands at
- * the hero and the closing sheet, and this is the third. No new design tokens,
- * no new component.
- *
- * Sits immediately after the proof bar and before the engagements, because it
- * is the answer to the question the prices are about to raise.
- */
 export function EngagementModel() {
   return (
     <Section id="model" tone="void" padding="py-20">

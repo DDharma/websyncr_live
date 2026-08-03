@@ -1,3 +1,8 @@
+/**
+ * Hero: positioning, founder credit, both CTAs, and the pipeline diagram.
+ * The logo watermark is scaled past the figure height so it reads as a stamp.
+ */
+
 import { CtaButton } from '@/components/ui/CtaButton';
 import { Logo } from '@/components/ui/Logo';
 import { HeroDiagram } from './HeroDiagram';
@@ -20,19 +25,25 @@ export function Hero() {
               {site.name} - {site.tagline}
             </p>
 
-            <h1 id="hero-heading" className="mb-7 text-h1 font-display">
-              Websyncr builds like one senior engineer - because it is one.
+            <h1 id="hero-heading" className="mb-5 text-h1 font-display">
+              Production AI systems for seed-stage teams. Shipped in weeks, not quarters.
             </h1>
 
-            <p className="mb-5 max-w-[52ch] text-lede text-inverse/78">
+            <p className="mb-6 max-w-[46ch] text-h3 font-display text-inverse/85">
+              Websyncr builds like one senior engineer - because it is one.
+            </p>
+
+            <p className="mb-6 max-w-[52ch] text-lede text-inverse/78">
               Every engagement is architected, built, and shipped personally by Websyncr&rsquo;s
               founder - not handed off to a bench of contractors. Agencies quote a team and deliver
               a bench. Websyncr quotes a scope and delivers production.
             </p>
 
-            {/* Role sits on its own line above the credits, so the name and
-                profile links read as one unbroken row instead of wrapping
-                mid-list behind a dash. */}
+            <p className="mb-8 max-w-[52ch] border-l-2 border-amber pl-5 font-mono text-msm text-inverse/72">
+              Built for seed to Series A teams in the US and EU, typically five to fifty people,
+              with a document, retrieval, or workflow problem worth solving properly.
+            </p>
+
             <p className="mb-8 font-mono text-msm tracking-cta-wide text-inverse/60">
               <span className="block uppercase">{founder.role}</span>
               <span className="mt-1.5 block">
@@ -54,8 +65,6 @@ export function Hero() {
               </span>
             </p>
 
-            {/* Secondary action stacks under the primary CTA rather than
-                sitting beside it, so there is one obvious next step. */}
             <div className="flex flex-col items-start gap-4">
               <CtaButton href={primaryCta.href} variant="amber" size="md" className="uppercase">
                 {primaryCta.label}
@@ -69,12 +78,6 @@ export function Hero() {
             </div>
           </div>
 
-          {/* The mark sits behind the diagram as an oversized watermark. It is
-              scaled well past the figure's own height on purpose: the diagram
-              is a short, wide graphic, so a mark sized to fit inside it reads
-              as a stray smudge behind one node rather than a deliberate stamp.
-              Decorative only - aria-hidden and pointer-events-none, at 8%
-              opacity so the labels above it stay fully legible. */}
           <figure className="relative m-0 min-w-0 flex-[1_1_420px]">
             <Logo className="pointer-events-none absolute top-1/2 left-1/2 h-[210%] w-auto -translate-x-1/2 -translate-y-1/2 opacity-8" />
             <div className="relative">

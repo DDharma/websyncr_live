@@ -1,15 +1,11 @@
+/**
+ * FAQ accordion on native <details>/<summary> — no JavaScript, and correct
+ * before hydration. `name` groups them so only one panel stays open.
+ */
+
 import { SectionHeading } from '@/components/ui/Section';
 import { faqs } from '@/content/content';
 
-/**
- * FAQ accordion built on native <details>/<summary>.
- *
- * Zero JavaScript: keyboard operable, screen-reader announced, and correct
- * before hydration — which the DS's max-height + state version could not be.
- * `name` groups them so only one panel stays open, matching the DS behaviour
- * without a state machine. Browsers without exclusive-accordion support simply
- * allow several open at once, which is a harmless degradation.
- */
 export function Faq() {
   return (
     <section
@@ -27,8 +23,6 @@ export function Faq() {
             <details key={faq.question} name="faq" className="group border-b border-rule">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5.5 text-faq-q font-display text-ink [&::-webkit-details-marker]:hidden">
                 <span>{faq.question}</span>
-                {/* Plus/minus drawn with two rules so it needs no icon font
-                    and flips purely on the [open] state. */}
                 <span
                   aria-hidden="true"
                   className="relative h-4 w-4 shrink-0 text-blueprint"

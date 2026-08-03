@@ -1,14 +1,11 @@
+/**
+ * Five-step engagement flow. Steps reveal on scroll via the CSS-only `reveal`
+ * utility — no observer, no client bundle, fully visible without support.
+ */
+
 import { Section, SectionHeading } from '@/components/ui/Section';
 import { processSteps } from '@/content/content';
 
-/**
- * Five-step engagement flow.
- *
- * The connecting rule is drawn behind the step markers and hidden from
- * assistive tech. Steps reveal on scroll via the CSS-only `reveal` utility —
- * no observer, no client bundle, and fully visible if the browser lacks
- * scroll-driven animation support or the visitor prefers reduced motion.
- */
 export function Process() {
   return (
     <Section id="process" tone="void">
@@ -19,7 +16,6 @@ export function Process() {
       <div className="relative">
         <div
           aria-hidden="true"
-          // 19px = half the 38px step marker, so the rule meets their centres.
           className="absolute top-4.75 right-0 left-0 hidden h-px bg-white/16 lg:block"
         />
         <ol className="relative m-0 grid list-none grid-cols-1 gap-8 p-0 sm:grid-cols-2 lg:grid-cols-5">

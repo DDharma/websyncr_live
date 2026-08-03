@@ -1,18 +1,6 @@
 /**
- * Websyncr brand mark — the three-stroke "W", from public/img/logo.svg.
- *
- * Inlined rather than loaded as an <img>: it costs no request, cannot shift
- * layout, and can be tinted or scaled per placement.
- *
- * The mark keeps its established brand cyan (`--color-brand`, #00C2FF) exactly
- * as supplied. It is the only colour on the page from outside the design
- * system palette, and it is confined to this component. Contrast minimums do
- * not apply: WCAG 1.4.3 governs text and 1.4.11 governs UI components and
- * meaningful graphics, while this is a decorative logo sitting beside a
- * wordmark that carries the name at 14.97:1.
- *
- * Each path is drawn twice — an 80%-opacity fill under a 4px stroke — which is
- * what gives the mark its outlined look in the source file.
+ * Websyncr brand mark, inlined so it costs no request and cannot shift layout.
+ * Each path draws twice — an 80% fill under a 4px stroke — for the outlined look.
  */
 
 const PATHS = [
@@ -23,10 +11,6 @@ const PATHS = [
 
 type LogoProps = {
   className?: string;
-  /**
-   * Decorative by default — the adjacent wordmark supplies the accessible
-   * name. Pass a title only when the mark stands alone.
-   */
   title?: string;
 };
 

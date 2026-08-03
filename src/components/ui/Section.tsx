@@ -1,18 +1,17 @@
+/**
+ * Section shell and heading. `tone` picks the light paper or dark void band;
+ * `padding` overrides the vertical rhythm, which varies per section.
+ */
+
 import type { ReactNode } from 'react';
 
 type Tone = 'paper' | 'void';
-
-/* -------------------------------------------------------------------------- */
-/* Section shell                                                              */
-/* -------------------------------------------------------------------------- */
 
 type SectionProps = {
   id: string;
   tone?: Tone;
   children: ReactNode;
-  /** Section label for assistive tech, when no visible h2 fits. */
   ariaLabel?: string;
-  /** Tailwind padding override — vertical rhythm varies per section. */
   padding?: string;
   className?: string;
 };
@@ -38,10 +37,6 @@ export function Section({
     </section>
   );
 }
-
-/* -------------------------------------------------------------------------- */
-/* Section heading                                                            */
-/* -------------------------------------------------------------------------- */
 
 export function SectionHeading({
   id,
