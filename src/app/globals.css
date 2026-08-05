@@ -146,10 +146,38 @@
   --ease-sheet: cubic-bezier(0.4, 0, 0.2, 1);
   --animate-rise: rise 0.6s ease forwards;
 
+  /* Listbox panel. Short enough to read as the field opening rather than as a
+     second surface arriving. Two directions because the panel flips above the
+     field when the viewport runs out below it. */
+  --animate-drop: drop 140ms var(--ease-sheet);
+  --animate-drop-up: drop-up 140ms var(--ease-sheet);
+
   @keyframes rise {
     from {
       opacity: 0;
       transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes drop {
+    from {
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes drop-up {
+    from {
+      opacity: 0;
+      transform: translateY(5px);
     }
     to {
       opacity: 1;

@@ -6,13 +6,16 @@
 export type Stat = { value: string; label: string };
 
 export const stats: readonly Stat[] = [
-  { value: '6', label: 'Years senior full-stack & AI systems experience' },
+  { value: '6+', label: 'Years senior full-stack & AI systems experience' },
+  { value: '25+', label: 'Systems and products shipped to production across clients' },
   {
-    value: '50+',
-    label: 'Enterprise clients architected for, via an AI hiring platform he built',
+    value: '10+',
+    label: 'Production AI systems - RAG, agents, and Claude-powered automation',
   },
-  { value: '$6.8M+', label: 'Enterprise pipeline generated on that same platform' },
-  { value: '90%', label: 'Faster hiring and delivery turnaround on that platform' },
+  {
+    value: '90%',
+    label: 'Faster hiring on the AI platform he built for 50+ enterprise clients',
+  },
   { value: '95+', label: 'Lighthouse performance on delivery - including this page' },
 ];
 

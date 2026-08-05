@@ -1,6 +1,6 @@
 /**
  * Verified-figures bar as a description list — dt → dd in DOM, flipped by flex.
- * The platform qualifier inside each label is load-bearing; do not trim it.
+ * One tile per artifact, so the 90%'s "50+ enterprise clients" qualifier stays put.
  */
 
 import { stats } from '@/content/content';

@@ -12,7 +12,7 @@ export const site = {
     'Production AI and RAG systems, fixed-price MVP sprints, and rescue audits - architected and built by one senior engineer, one build at a time. From $2,500.',
   alternateNames: ['Web Syncr', 'Web Syncer', 'WebSyncr'],
   locale: 'en_US',
-  email: 'dharmvir@websyncr.in',
+  email: 'websyncr.info@gmail.com',
   location: 'Gurugram, India',
   timezoneNote: 'remote · overlaps US / UK / AU hours',
   countryCode: 'IN',
