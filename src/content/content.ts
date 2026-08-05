@@ -20,23 +20,28 @@ export const stats: readonly Stat[] = [
 ];
 
 export const engagementModel = {
-  headline: 'One build at a time.',
-  body: 'I take a single build at a time. Not one per team - one, full stop. While your build is running, no second client is competing for the same hours. Nobody more junior quietly picks it up when something urgent lands. The person who scopes your system is the person who architects it, writes it, and hands it over. Care Plans are the one thing that runs alongside: maintaining a system that already shipped is not a project, so it never takes the slot.',
+  headline: 'One build at a time. Yours, or someone else’s.',
+  body: 'Every other quote on your desk comes from someone who will be working on two or five other things while they work on yours - an agency spreading a team across accounts, or a freelancer running parallel clients to make the month add up. Neither will say so on the call. Here the arithmetic is public: one build, one slot, one person, and a fixed price that leaves no reason to put a second client ahead of you. The person who scopes your system is the person who architects it, writes it, and hands it over. Care Plans are the one thing that runs alongside - maintaining a system that already shipped is not a project, so it never takes the slot.',
   points: [
     {
       title: 'No parallel work',
       description:
-        'Your build is the only build - no second build runs beside it. That is the whole reason a three-week sprint can actually take three weeks.',
+        'Your build is the only build. No second client is competing for the same hours, which is the only reason a three-week sprint takes three weeks and not a quarter.',
     },
     {
       title: 'No bench, no handoffs',
       description:
-        'Nothing is subcontracted out. You never get reassigned to someone you have not spoken to.',
+        'Nothing is subcontracted. No account manager, no project manager, and nobody more junior quietly picking it up when something urgent lands on another account.',
     },
     {
-      title: 'Honest scheduling',
+      title: 'You hold the code',
       description:
-        'If I am mid-build when you reach out, I will tell you the real start date rather than take a deposit and queue you.',
+        'Code and deploy access are yours from the first milestone, not at handover. If we stop for any reason you keep everything already paid for, plus a written handover of where the work stands.',
+    },
+    {
+      title: 'A date, or a no',
+      description:
+        'If I am mid-build when you reach out, you get the real start date on the call - not a deposit invoice and a place in a queue. If the timing does not work for you, I will say so.',
     },
   ],
 } as const;

@@ -8,8 +8,15 @@ import { engagementModel } from '@/content/content';
 
 export function EngagementModel() {
   return (
-    <Section id="model" tone="void" padding="py-20">
-      <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,34rem)_1fr]">
+    <Section id="model" tone="void" padding="py-20" className="relative overflow-hidden">
+      <span
+        aria-hidden="true"
+        className="numeral-mark pointer-events-none absolute top-1/2 left-0 hidden -translate-y-1/2 font-display select-none lg:block"
+      >
+        1
+      </span>
+
+      <div className="relative grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,34rem)_1fr]">
         <div>
           <SectionHeading id="model-heading" className="mb-6">
             {engagementModel.headline}

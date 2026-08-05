@@ -400,6 +400,31 @@
 }
 
 /* ==========================================================================
+   NUMERAL WATERMARK
+   The giant "1" behind the engagement-model band. Drawn as an outline rather
+   than a low-opacity fill so it reads as a blueprint annotation instead of a
+   grey smudge, and so it never lifts the background enough to cost the body
+   copy contrast.
+
+   `-webkit-text-stroke` is unprefixed nowhere, so the plain fill below is the
+   real declaration and the @supports block is the upgrade. Fill has to be
+   cleared to transparent inside the block or the stroke rides on a solid glyph.
+   ========================================================================== */
+
+.numeral-mark {
+  font-size: clamp(12rem, 27vw, 27rem);
+  line-height: 0.72;
+  color: rgb(110 147 181 / 0.09);
+}
+
+@supports (-webkit-text-stroke: 1px currentColor) {
+  .numeral-mark {
+    color: transparent;
+    -webkit-text-stroke: 2px rgb(110 147 181 / 0.26);
+  }
+}
+
+/* ==========================================================================
    HERO PIPELINE
    The idea -> ship timeline. Time-based rather than scroll-driven, because it
    sits above the fold and has to run on load.
