@@ -27,7 +27,7 @@ export const founder = {
 } as const;
 
 export const links = {
-  calendly: 'https://calendly.com/websyncr/discovery-call',
+  calendly: 'https://calendly.com/websyncr-info/30min',
   projectForm: 'https://docs.google.com/forms/d/e/1FAIpQLSc-websyncr-placeholder/viewform',
   rescue: '/rescue',
   mailto: `mailto:${site.email}?subject=${encodeURIComponent('Project inquiry - fixed-scope engagement')}`,
