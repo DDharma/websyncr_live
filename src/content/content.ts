@@ -317,14 +317,15 @@ export const aboutParagraphs: readonly string[] = [
   'I take one build at a time, at a fixed scope and a fixed price, because ambiguity and divided attention are where projects die. You get a plan, a fixed number, and milestone check-ins until it ships.',
 ];
 
-export const titleBlock: readonly [string, string][] = [
-  ['Name', 'Dharmvir Dharmacharya'],
-  ['Role', 'Founder & Lead Architect'],
-  ['Studio', 'Websyncr'],
-  ['Location', 'Gurugram, India'],
-  ['Overlap', 'US / UK / AU hours'],
-  ['Capacity', 'One build at a time · up to 2 care plans'],
-  ['Terms', '50% / 50%, fixed price'],
+export type StudioFact = { label: string; value: string };
+
+export const studioFacts: readonly (readonly StudioFact[])[] = [
+  [
+    { label: 'Location', value: 'Gurugram, India' },
+    { label: 'Overlap', value: 'US / UK / AU' },
+  ],
+  [{ label: 'Capacity', value: 'One build at a time · up to 2 care plans' }],
+  [{ label: 'Terms', value: '50% / 50%, fixed price' }],
 ];
 
 export const briefFields = [
