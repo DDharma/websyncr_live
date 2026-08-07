@@ -23,13 +23,13 @@ export function Hero() {
             </h1>
 
             <p className="mb-6 max-w-[46ch] text-h3 font-display text-inverse/85">
-              Websyncr builds like one senior engineer - because it is one.
+              Websyncr builds like one senior engineer, because it is one.
             </p>
 
             <p className="mb-8 max-w-[52ch] text-lede text-inverse/78">
               Every engagement is architected, built, and shipped personally by Websyncr&rsquo;s
-              founder - not handed off to a bench of contractors. Agencies quote a team and deliver
-              a bench. Websyncr quotes a scope and delivers production.
+              founder. Agencies sell you a team and then staff it with whoever happens to be free
+              that month. Here you deal with one engineer, from the first quote through to handover.
             </p>
 
             <div className="flex flex-col items-start gap-4">

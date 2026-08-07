@@ -9,7 +9,7 @@ export const site = {
   title: 'Fixed-Price AI Systems & MVP Development - Websyncr',
   tagline: 'Full-stack engineering & AI systems architecture',
   description:
-    'Production AI and RAG systems, fixed-price MVP sprints, and rescue audits - architected and built by one senior engineer, one build at a time. From $2,500.',
+    'Production AI and RAG systems, fixed-price MVP sprints, and rescue audits, architected and built by one senior engineer, one build at a time. From $2,500.',
   alternateNames: ['Web Syncr', 'Web Syncer', 'WebSyncr'],
   locale: 'en_US',
   email: 'websyncr.info@gmail.com',

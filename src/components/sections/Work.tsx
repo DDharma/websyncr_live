@@ -69,7 +69,7 @@ export function Work() {
 
       <CategoryHeader
         id="work-set-a"
-        title="Independent Client Delivery"
+        title="Independent client delivery"
         note="(Confidential Client)"
       />
       <div className="mb-16">
@@ -78,7 +78,7 @@ export function Work() {
 
       <CategoryHeader
         id="work-set-b"
-        title="Enterprise Architecture & Technical Leadership"
+        title="Enterprise architecture & technical leadership"
         note="(as Technical Lead / Architect)"
       />
       <div className="mb-14">

@@ -27,7 +27,7 @@ export function StructuredData() {
         url: site.url,
         email: site.email,
         description: site.description,
-        slogan: 'Fixed scope. Fixed price. Shipped.',
+        slogan: 'One build at a time, at a fixed price.',
         priceRange: '$2,500–$45,000+',
         image: `${site.url}/og.png`,
         areaServed: 'Worldwide',

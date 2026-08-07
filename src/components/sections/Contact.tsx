@@ -51,9 +51,9 @@ export function Contact() {
             Rather send details first?
           </SectionHeading>
           <p className="mb-8 max-w-[54ch] text-body text-muted">
-            The 20-minute discovery call is the fastest route to a fixed number - book it and the
-            proposal follows within 24–48 hours. If you would rather write it down, the project
-            brief opens a pre-filled email in your own mail client. Nothing is sent to a server.
+            The 20-minute discovery call is the fastest route to a fixed number, and the proposal
+            follows within 24–48 hours. If you would rather write it down first, the project brief
+            opens a pre-filled email in your own mail client. Nothing is sent to a server.
           </p>
 
           <div className="flex flex-col items-start gap-4">
@@ -130,7 +130,7 @@ export function Contact() {
           </CtaButton>
 
           <p id="brief-note" className="mt-3 font-mono text-mxs text-muted">
-            Opens your mail client. No data is stored or transmitted by this site.
+            This opens your own mail client. The site itself stores nothing.
           </p>
 
           <p role="status" aria-live="polite" className="mt-2 font-mono text-mxs text-blueprint">

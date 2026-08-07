@@ -14,13 +14,13 @@ const PHASES: readonly Phase[] = [
   {
     num: '01',
     label: 'Idea',
-    detail: 'Discovery call. The problem, not a sales script.',
+    detail: 'A call about the actual problem.',
     week: 'Week 01',
   },
   {
     num: '02',
     label: 'Architecture',
-    detail: 'Scope locked, fixed quote, one number.',
+    detail: 'Scope locked, then one fixed number.',
     week: 'Week 01',
   },
   {
@@ -38,7 +38,7 @@ const PHASES: readonly Phase[] = [
   {
     num: '05',
     label: 'Ship',
-    detail: 'CI/CD, docs, and the keys.',
+    detail: 'CI/CD wired up, docs, then handover.',
     week: 'Week 04',
   },
 ];
@@ -80,7 +80,7 @@ export function HeroDiagram() {
       </ol>
 
       <p className="mt-7 border-t border-inverse/14 pt-4 font-mono text-m2xs tracking-sheet text-inverse/55 uppercase">
-        Architected &amp; built by one person - no bench, no handoffs
+        Architected &amp; built by one person, start to finish
       </p>
     </div>
   );

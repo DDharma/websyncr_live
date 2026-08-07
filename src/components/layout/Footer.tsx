@@ -58,7 +58,7 @@ export function Footer() {
         </div>
 
         <p className="mt-6 font-mono text-mxs text-inverse/60">
-          © {year} {site.name}. Every engagement led personally by{' '}
+          © {year} {site.name}. Every engagement is led personally by{' '}
           <a
             href={founder.website}
             {...externalLinkProps}
@@ -66,7 +66,7 @@ export function Footer() {
           >
             {founder.name}
           </a>
-          , {founder.role} - not a bench of contractors.
+          , {founder.role}.
         </p>
       </div>
     </footer>

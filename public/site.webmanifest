@@ -1,7 +1,7 @@
 {
-  "name": "Websyncr - Full-Stack Engineering & AI Systems Architecture",
+  "name": "Websyncr — Full-Stack Engineering & AI Systems Architecture",
   "short_name": "Websyncr",
-  "description": "Fixed-price MVP sprints, AI/MCP automation, and app rescues, architected and built by one senior architect.",
+  "description": "Fixed-price MVP sprints, production AI and RAG systems, and rescue audits, architected and built by one senior engineer.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#12151A",
