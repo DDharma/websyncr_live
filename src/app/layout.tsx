@@ -1,6 +1,6 @@
 /**
  * Root layout: page metadata, viewport, and self-hosted fonts via next/font.
- * Weights are trimmed to what the markup renders — 4 woff2 files instead of 9.
+ * Weights are trimmed to what the markup renders - 4 woff2 files instead of 9.
  */
 
 import type { Metadata, Viewport } from 'next';
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
         url: '/og.png',
         width: 1200,
         height: 630,
-        alt: 'Websyncr — full-stack engineering and AI systems architecture. Fixed-price engagements from $2,500.',
+        alt: 'Websyncr - full-stack engineering and AI systems architecture. Fixed-price engagements from $2,500.',
       },
     ],
   },

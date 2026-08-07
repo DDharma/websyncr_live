@@ -1,5 +1,5 @@
 /**
- * Verified-figures bar as a description list — dt → dd in DOM, flipped by flex.
+ * Verified-figures bar as a description list - dt → dd in DOM, flipped by flex.
  * One tile per artifact, so the 90%'s "50+ enterprise clients" qualifier stays put.
  */
 

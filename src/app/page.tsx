@@ -1,5 +1,5 @@
 /**
- * Home page composition — the single-page section order, top to bottom.
+ * Home page composition - the single-page section order, top to bottom.
  * The skip link precedes Nav so keyboard focus reaches it first.
  */
 

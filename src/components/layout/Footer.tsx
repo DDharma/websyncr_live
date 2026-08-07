@@ -1,6 +1,6 @@
 /**
  * Closing CTA sheet and footer; the Websyncr wordmark is the masthead here.
- * Founder credit sits at inverse/60 — the lowest alpha that still passes 1.4.3.
+ * Founder credit sits at inverse/60 - the lowest alpha that still passes 1.4.3.
  */
 
 import { CtaButton } from '@/components/ui/CtaButton';

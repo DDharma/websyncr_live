@@ -9,7 +9,7 @@ import { briefFields } from '@/content/content';
 import { site, links, primaryCta, externalLinkProps } from '@/lib/site';
 
 /**
- * Project brief that composes a pre-filled mailto — no backend, nothing stored.
+ * Project brief that composes a pre-filled mailto - no backend, nothing stored.
  */
 
 export function Contact() {

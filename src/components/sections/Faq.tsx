@@ -1,5 +1,5 @@
 /**
- * FAQ accordion on native <details>/<summary> — no JavaScript, and correct
+ * FAQ accordion on native <details>/<summary> - no JavaScript, and correct
  * before hydration. `name` groups them so only one panel stays open.
  */
 

@@ -1,5 +1,5 @@
 /**
- * All page copy. Verified facts only — no invented client, testimonial, or
+ * All page copy. Verified facts only - no invented client, testimonial, or
  * metric, and no testimonials at all until real attributed quotes exist.
  */
 
@@ -10,7 +10,7 @@ export const stats: readonly Stat[] = [
   { value: '25+', label: 'Systems and products shipped to production across clients' },
   {
     value: '10+',
-    label: 'Production AI systems — RAG, agents, and Claude-powered automation',
+    label: 'Production AI systems - RAG, agents, and Claude-powered automation',
   },
   { value: '90%', label: 'Reduction in time-to-hire on the AI hiring platform we built' },
   { value: '95+', label: 'Lighthouse performance on delivery, this page included' },
@@ -18,7 +18,7 @@ export const stats: readonly Stat[] = [
 
 export const engagementModel = {
   headline: 'One build at a time. Yours, or someone else’s.',
-  body: 'Every other quote on your desk comes from someone who will be working on two or five other things while they work on yours, an agency spreading a team across accounts, or a freelancer running parallel clients to make the month add up. Neither will say so on the call. Here you can count it yourself — one build, one slot, and a fixed price that gives nobody a reason to put another client ahead of you. Whoever scopes your system is the same person who architects it, writes it, and hands it over. Care Plans are the one thing that runs alongside a build. Maintaining a system that already shipped is not a project, so it never takes the slot.',
+  body: 'Every other quote on your desk comes from someone who will be working on two or five other things while they work on yours, an agency spreading a team across accounts, or a freelancer running parallel clients to make the month add up. Neither will say so on the call. Here you can count it yourself - one build, one slot, and a fixed price that gives nobody a reason to put another client ahead of you. Whoever scopes your system is the same person who architects it, writes it, and hands it over. Care Plans are the one thing that runs alongside a build. Maintaining a system that already shipped is not a project, so it never takes the slot.',
   points: [
     {
       title: 'No parallel work',
@@ -190,7 +190,7 @@ export const capabilities: readonly Capability[] = [
     name: 'Mobile Applications',
     years: '3+ yrs',
     description:
-      'Cross-platform iOS and Android from one codebase, including the parts teams usually discover late — store submission, native permissions, and offline behaviour.',
+      'Cross-platform iOS and Android from one codebase, including the parts teams usually discover late - store submission, native permissions, and offline behaviour.',
     stack: ['React Native', 'Expo', 'iOS', 'Android'],
   },
   {
@@ -354,7 +354,7 @@ export const faqs: readonly Faq[] = [
   {
     question: 'Where does my data live during an AI build, and what happens to it afterwards?',
     answer:
-      'The build runs in my environment while it is being written. At handover the whole system — application, vector store, embeddings, keys, and deploy pipeline — moves into your cloud account and runs there from that point on. Your data is never used to train or fine-tune a model, and nothing is shared with any other client. Any working copy on my side is destroyed once handover is signed off, and I will confirm that in writing. If your compliance position needs the build to sit inside your perimeter from day one, that is doable. Raise it in the discovery sprint, because it changes the architecture and the number.',
+      'The build runs in my environment while it is being written. At handover the whole system - application, vector store, embeddings, keys, and deploy pipeline - moves into your cloud account and runs there from that point on. Your data is never used to train or fine-tune a model, and nothing is shared with any other client. Any working copy on my side is destroyed once handover is signed off, and I will confirm that in writing. If your compliance position needs the build to sit inside your perimeter from day one, that is doable. Raise it in the discovery sprint, because it changes the architecture and the number.',
   },
   {
     question: 'What happens after the sprint ends?',

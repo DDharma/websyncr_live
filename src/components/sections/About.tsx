@@ -1,5 +1,5 @@
 /**
- * Founder credit plus the studio title block — named for the data plate on an engineering drawing.
+ * Founder credit plus the studio title block - named for the data plate on an engineering drawing.
  * Each inner array of `studioFacts` is one row; a row holding one fact spans the card.
  */
 

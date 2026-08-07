@@ -1,5 +1,5 @@
 /**
- * Site-wide config — one place to swap every outbound destination.
+ * Site-wide config - one place to swap every outbound destination.
  * PRE-LAUNCH: `links.calendly` and `links.projectForm` are still placeholders.
  */
 
