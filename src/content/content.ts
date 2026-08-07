@@ -14,7 +14,7 @@ export const stats: readonly Stat[] = [
   },
   {
     value: '90%',
-    label: 'Faster hiring on the AI platform he built for 50+ enterprise clients',
+    label: 'Reduction in time-to-hire, on the AI platform he built for 50+ enterprise clients',
   },
   { value: '95+', label: 'Lighthouse performance on delivery - including this page' },
 ];
@@ -46,15 +46,28 @@ export const engagementModel = {
   ],
 } as const;
 
+export type OfferGroupId = 'start' | 'build' | 'sustain';
+
 export type Offer = {
   num: string;
   name: string;
   price: string;
   meta: string;
   tag: string | null;
+  group: OfferGroupId;
   description: string;
+  drivers?: readonly string[];
   terms: string;
 };
+
+export const offerGroups: readonly { id: OfferGroupId; title: string; note: string }[] = [
+  { id: 'start', title: 'Start here', note: 'Before anyone quotes a number' },
+  { id: 'build', title: 'Build', note: 'Fixed scope, fixed price, one at a time' },
+  { id: 'sustain', title: 'Keep it running', note: 'After it ships' },
+];
+
+export const offersProof =
+  '10+ production AI systems already shipped, including one used across 50+ enterprise clients.';
 
 export const offers: readonly Offer[] = [
   {
@@ -63,46 +76,77 @@ export const offers: readonly Offer[] = [
     price: '$2,500',
     meta: 'One week · fee credited to the build',
     tag: 'Start here',
+    group: 'start',
     description:
       'A fixed quote on a system nobody has examined yet is a guess. One week buys the architecture, the scope, and a firm number. Go ahead and the fee comes off the build; walk away and you keep the spec.',
     terms: '100% up front · credited in full if you proceed',
   },
   {
     num: '02',
-    name: '3-Week MVP Sprint',
-    price: '$18,000 – $25,000',
-    meta: 'Three weeks · fixed scope',
-    tag: null,
-    description:
-      'Idea to deployed product in three weeks. Full-stack build, no scope creep, no bench of subcontractors. Agencies quote $30,000-$55,000 for comparable fixed-price scope; the difference is overhead, not engineering.',
-    terms: '50% to start · 50% on delivery',
-  },
-  {
-    num: '03',
-    name: 'AI / RAG System Build',
-    price: '$25,000 – $45,000',
-    meta: 'Four to eight weeks · fixed scope',
-    tag: null,
-    description:
-      'Production RAG pipelines, custom knowledge bases, and LLM integrations wired into the tools you already run on. Retrieval that is evaluated rather than assumed, and a system your team can operate after handover.',
-    terms: '50% to start · 50% on delivery',
-  },
-  {
-    num: '04',
     name: 'Rescue Audit',
     price: '$3,500',
     meta: 'Five days · fixed fee',
-    tag: 'Expedited',
+    tag: null,
+    group: 'start',
     description:
       'A stalled build gets a full read of the codebase, architecture, and deploy path, then a prioritised plan to ship it. No blame narrative and no rewrite-everything pitch. Remediation is quoted separately from what the audit finds.',
     terms: '100% up front · remediation quoted separately',
   },
   {
+    num: '03',
+    name: '3-Week MVP Sprint',
+    price: 'From $22,000',
+    meta: 'Three weeks · fixed scope',
+    tag: null,
+    group: 'build',
+    description:
+      'Idea to deployed product in three weeks. Full-stack build, no scope creep, no bench of subcontractors. Agencies quote $30,000-$55,000 for comparable fixed-price scope; the difference is overhead, not engineering.',
+    drivers: [
+      'How many third-party integrations and auth flows it has to carry',
+      'Compliance obligations - SOC 2, HIPAA, GDPR, audit logging',
+    ],
+    terms: '50% to start · 50% on delivery',
+  },
+  {
+    num: '04',
+    name: 'AI Agent & Automation Build',
+    price: 'From $35,000',
+    meta: 'Three to six weeks · fixed scope',
+    tag: null,
+    group: 'build',
+    description:
+      'Agents that do the work, not just answer questions about it. Multi-step workflows that read your systems, take actions in them, and hand back to a human when they should. Claude-powered, with the tool calls, retries, and audit trail a production system actually needs.',
+    drivers: [
+      'How many systems the agent reads from and takes actions in',
+      'Whether behaviour needs a formal eval harness or spot checks',
+      'Compliance obligations - audit logging, data residency, pen-test support',
+    ],
+    terms: '50% to start · 50% on delivery',
+  },
+  {
     num: '05',
+    name: 'AI / RAG System Build',
+    price: 'From $45,000',
+    meta: 'Four to eight weeks · fixed scope',
+    tag: 'Most popular',
+    group: 'build',
+    description:
+      'Production RAG pipelines, custom knowledge bases, and LLM integrations wired into the tools you already run on. Retrieval that is evaluated rather than assumed, and a system your team can operate after handover.',
+    drivers: [
+      'Document volume, and how many separate systems those documents live in',
+      'How many integrations the retrieval layer has to reach into',
+      'Whether retrieval needs a labelled eval set or spot checks',
+      'Compliance obligations - SOC 2, HIPAA, GDPR, data residency',
+    ],
+    terms: '50% to start · 50% on delivery',
+  },
+  {
+    num: '06',
     name: 'AI Systems Care Plan',
     price: '$3,500 – $6,000',
     meta: 'Per month · 3-month minimum · two clients maximum',
     tag: 'Ongoing',
+    group: 'sustain',
     description:
       'An LLM system is not a set-and-forget asset. Models get deprecated, prompts drift, retrieval quality decays as your corpus grows, and API contracts change under you. This covers monitoring, evaluation, prompt and retrieval tuning, dependency and model upgrades, and a guaranteed response window when something breaks. Runs alongside an active build — maintenance is not a project, so it does not take the one slot.',
     terms: 'Monthly · 30 days notice · cancel any time after month three',
@@ -110,7 +154,7 @@ export const offers: readonly Offer[] = [
 ];
 
 export const hourlyRate = {
-  rate: '$175/hr',
+  rate: '$225/hr',
   note: 'Advisory, audits, and scoped fixes too small to run as a sprint. Fixed price is the default; this is the exception.',
 } as const;
 
@@ -161,7 +205,7 @@ export const capabilities: readonly Capability[] = [
   },
 ];
 
-export type CaseStudy = { title: string; meta: string; description: string };
+export type CaseStudy = { title: string; meta: string; description: string; href?: string };
 
 export const independentWork: readonly CaseStudy[] = [
   {
@@ -169,12 +213,14 @@ export const independentWork: readonly CaseStudy[] = [
     meta: 'Confidential Client',
     description:
       'Vendor, customer, and delivery-partner apps on one platform - full CRM, automated WhatsApp ordering, and an automated finance dashboard.',
+    href: '/case-studies/food-delivery-marketplace/',
   },
   {
     title: 'Omnichannel Hardware Commerce System',
     meta: 'Confidential Client',
     description:
       'A unified admin platform running in-store POS/kiosk and online ordering, plus a customer-facing mobile app.',
+    href: '/case-studies/omnichannel-commerce/',
   },
 ];
 
@@ -183,25 +229,33 @@ export const enterpriseWork: readonly CaseStudy[] = [
     title: 'EMB Talent Platform',
     meta: 'Technical Lead / Architect',
     description:
-      'AI hiring platform used across 50+ enterprise clients - 90% faster hiring, $6.8M+ in enterprise pipeline generated.',
+      'AI hiring platform used across 50+ enterprise clients. Cut time-to-hire by 90% against their previous process, and generated $6.8M+ in enterprise pipeline.',
+    href: '/case-studies/emb-talent-platform/',
   },
   {
     title: 'AI Requirements / BRD Generator',
     meta: 'Technical Lead / Architect',
     description: 'RAG-based spec generation that cut client onboarding time by 60%.',
+    href: '/case-studies/brd-generator/',
   },
   {
     title: 'Autonomous AI Dev Agent',
     meta: 'Confidential · In Production',
     description:
       'Agentic pipeline that codes, tests, deploys, and resolves feedback automatically from Jira and Slack.',
+    href: '/case-studies/autonomous-dev-agent/',
   },
   {
     title: 'Artha CRM & Project Management Suite',
     meta: 'Technical Lead / Architect',
     description: 'Multi-tenant CRM managing $5M+ in active deals.',
+    href: '/case-studies/artha-crm/',
   },
 ];
+
+export type Testimonial = { quote: string; name: string; title: string; company: string };
+
+export const testimonials: readonly Testimonial[] = [];
 
 export type AdditionalSystem = { title: string; description: string };
 
@@ -262,7 +316,7 @@ export const faqs: readonly Faq[] = [
   {
     question: 'How much does it cost to build an AI or RAG system?',
     answer:
-      'Here, $25,000 to $45,000 for a production RAG system, and $18,000 to $25,000 for a three-week full-stack MVP. For comparison, agencies quote $55,000 to $90,000 for a production RAG build and $30,000 to $55,000 for a fixed-price MVP. The gap is overhead rather than engineering: there is no account manager, no project manager, and no bench between you and the person writing the code.',
+      'Here, from $45,000 for a production RAG system, and from $22,000 for a three-week full-stack MVP. For comparison, agencies quote $55,000 to $90,000 for a production RAG build and $30,000 to $55,000 for a fixed-price MVP. The gap is overhead rather than engineering: there is no account manager, no project manager, and no bench between you and the person writing the code.',
   },
   {
     question: 'Who do you work with?',
@@ -298,6 +352,11 @@ export const faqs: readonly Faq[] = [
     question: 'Do you sign NDAs?',
     answer:
       'Yes, always, before any project details change hands. Most of my independent client work is confidential for exactly this reason.',
+  },
+  {
+    question: 'Where does my data live during an AI build, and what happens to it afterwards?',
+    answer:
+      'The build runs in my environment while it is being written, then the whole system - application, vector store, embeddings, keys, and deploy pipeline - is migrated into your cloud account at handover, and it runs there from that point on. Your data is never used to train or fine-tune a model, and nothing is shared with any other client. Any working copy on my side is destroyed once handover is signed off, and I will confirm that in writing. If your compliance position requires the build to happen inside your perimeter from day one rather than at handover, that is doable - raise it in the discovery sprint, because it changes the architecture and the number.',
   },
   {
     question: 'What happens after the sprint ends?',

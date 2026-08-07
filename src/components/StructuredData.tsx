@@ -1,6 +1,6 @@
 /**
  * JSON-LD graph: studio, founder, engagements, services, and FAQ.
- * A fixed fee has no upper bound, so maxPrice falls back to minPrice, not 0.
+ * "From $X" is open-ended, so it emits minPrice alone; a flat fee repeats it as maxPrice.
  */
 
 import { site, founder, links } from '@/lib/site';
@@ -12,6 +12,7 @@ export function StructuredData() {
       Number(m[1]!.replace(/,/g, '')),
     );
     const min = money[0] ?? 0;
+    if (/^from/i.test(price.trim())) return { min, max: undefined };
     return { min, max: money[1] ?? min };
   };
 
@@ -27,7 +28,7 @@ export function StructuredData() {
         email: site.email,
         description: site.description,
         slogan: 'Fixed scope. Fixed price. Shipped.',
-        priceRange: '$2,500–$45,000',
+        priceRange: '$2,500–$45,000+',
         image: `${site.url}/og.png`,
         areaServed: 'Worldwide',
         address: {
@@ -59,7 +60,7 @@ export function StructuredData() {
                 '@type': monthly ? 'UnitPriceSpecification' : 'PriceSpecification',
                 priceCurrency: 'USD',
                 minPrice: min,
-                maxPrice: max,
+                ...(max === undefined ? {} : { maxPrice: max }),
                 ...(monthly ? { unitCode: 'MON', billingIncrement: 1 } : {}),
               },
               url: `${site.url}/#offers`,
