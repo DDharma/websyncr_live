@@ -12,10 +12,7 @@ export const stats: readonly Stat[] = [
     value: '10+',
     label: 'Production AI systems - RAG, agents, and Claude-powered automation',
   },
-  {
-    value: '90%',
-    label: 'Reduction in time-to-hire, on the AI platform he built for 50+ enterprise clients',
-  },
+  { value: '90%', label: 'Reduction in time-to-hire on the AI hiring platform I built' },
   { value: '95+', label: 'Lighthouse performance on delivery - including this page' },
 ];
 
