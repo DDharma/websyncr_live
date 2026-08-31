@@ -1,5 +1,5 @@
 /**
- * Home page composition — the single-page section order, top to bottom.
+ * Home page composition - the single-page section order, top to bottom.
  * The skip link precedes Nav so keyboard focus reaches it first.
  */
 
@@ -11,6 +11,7 @@ import { EngagementModel } from '@/components/sections/EngagementModel';
 import { Offers } from '@/components/sections/Offers';
 import { Capabilities } from '@/components/sections/Capabilities';
 import { Work } from '@/components/sections/Work';
+import { Testimonials } from '@/components/sections/Testimonials';
 import { Process } from '@/components/sections/Process';
 import { About } from '@/components/sections/About';
 import { Faq } from '@/components/sections/Faq';
@@ -38,6 +39,7 @@ export default function HomePage() {
         <Offers />
         <Capabilities />
         <Work />
+        <Testimonials />
         <Process />
         <About />
         <Faq />

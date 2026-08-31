@@ -1,6 +1,6 @@
 /**
  * Root layout: page metadata, viewport, and self-hosted fonts via next/font.
- * Weights are trimmed to what the markup renders — 4 woff2 files instead of 9.
+ * Weights are trimmed to what the markup renders - 4 woff2 files instead of 9.
  */
 
 import type { Metadata, Viewport } from 'next';

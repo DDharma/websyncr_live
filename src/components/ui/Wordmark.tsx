@@ -1,6 +1,6 @@
 /**
  * Lockup: brand mark, WEBSYNCR wordmark, amber terminating square.
- * The square is a graphic, not a "." glyph — amber as text would fail 1.4.3.
+ * The square is a graphic, not a "." glyph - amber as text would fail 1.4.3.
  */
 
 import { site } from '@/lib/site';

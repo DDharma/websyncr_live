@@ -1,5 +1,5 @@
 /**
- * Site-wide config — one place to swap every outbound destination.
+ * Site-wide config - one place to swap every outbound destination.
  * PRE-LAUNCH: `links.calendly` and `links.projectForm` are still placeholders.
  */
 
@@ -9,10 +9,10 @@ export const site = {
   title: 'Fixed-Price AI Systems & MVP Development - Websyncr',
   tagline: 'Full-stack engineering & AI systems architecture',
   description:
-    'Production AI and RAG systems, fixed-price MVP sprints, and rescue audits - architected and built by one senior engineer, one build at a time. From $2,500.',
+    'Production AI and RAG systems, fixed-price MVP sprints, and rescue audits, architected and built by one senior engineer, one build at a time. From $2,500.',
   alternateNames: ['Web Syncr', 'Web Syncer', 'WebSyncr'],
   locale: 'en_US',
-  email: 'dharmvir@websyncr.in',
+  email: 'websyncr.info@gmail.com',
   location: 'Gurugram, India',
   timezoneNote: 'remote · overlaps US / UK / AU hours',
   countryCode: 'IN',
@@ -27,7 +27,7 @@ export const founder = {
 } as const;
 
 export const links = {
-  calendly: 'https://calendly.com/websyncr/discovery-call',
+  calendly: 'https://calendly.com/websyncr-info/30min',
   projectForm: 'https://docs.google.com/forms/d/e/1FAIpQLSc-websyncr-placeholder/viewform',
   rescue: '/rescue',
   mailto: `mailto:${site.email}?subject=${encodeURIComponent('Project inquiry - fixed-scope engagement')}`,

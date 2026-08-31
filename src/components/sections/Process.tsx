@@ -1,6 +1,6 @@
 /**
  * Five-step engagement flow. Steps reveal on scroll via the CSS-only `reveal`
- * utility — no observer, no client bundle, fully visible without support.
+ * utility - no observer, no client bundle, fully visible without support.
  */
 
 import { Section, SectionHeading } from '@/components/ui/Section';

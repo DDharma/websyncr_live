@@ -1,4 +1,4 @@
-# Websyncr — websyncr.in
+# Websyncr - websyncr.in
 
 Marketing and lead-generation site for Websyncr, a solo AI/full-stack engineering
 studio. The site is also a portfolio piece: it is held to the same standards it
@@ -12,7 +12,7 @@ sells, so the constraints below are requirements rather than preferences.
 | Language | TypeScript (strict, `noUncheckedIndexedAccess`) |
 | Styling | Tailwind CSS 4 (CSS-first `@theme` tokens) |
 | Package manager | pnpm 10 (pinned via `packageManager`) |
-| Output | Fully static (`output: 'export'`) — no server, no database, no API routes |
+| Output | Fully static (`output: 'export'`) - no server, no database, no API routes |
 | Fonts | Space Grotesk, IBM Plex Sans, IBM Plex Mono, self-hosted via `next/font` |
 
 ## Commands
@@ -29,7 +29,7 @@ pnpm verify         # typecheck + lint + build
 `pnpm-lock.yaml` is committed and is the source of truth for dependency
 versions; there is no `package-lock.json`. pnpm's blocked postinstall scripts
 (`sharp`, `unrs-resolver`) are declared as intentionally ignored in
-`package.json` — neither is needed, since a static export never runs Image
+`package.json` - neither is needed, since a static export never runs Image
 Optimization.
 
 Deploy `./out` to any static host. No environment variables and no runtime
@@ -83,14 +83,14 @@ reusing an existing token rather than introducing a new colour:
 
 The brand mark keeps its established cyan (`--color-brand`, `#00C2FF`), which
 is not part of the DS palette. It is declared once in `@theme` and used only by
-[`src/components/ui/Logo.tsx`](src/components/ui/Logo.tsx) — never on text, UI,
+[`src/components/ui/Logo.tsx`](src/components/ui/Logo.tsx) - never on text, UI,
 or borders. Contrast minimums do not apply to it: 1.4.3 governs text and 1.4.11
 governs UI components and meaningful graphics, and the mark is decorative next
 to a wordmark that carries the name at 14.97:1.
 
 The mark appears in the nav, the footer, as an 8%-opacity watermark behind the
 hero diagram, and in `public/icon.svg`, the favicon set, and `public/og.png`.
-The icon and OG PNGs are generated from the same paths — if the logo changes,
+The icon and OG PNGs are generated from the same paths - if the logo changes,
 regenerate them rather than hand-editing.
 
 The icon set is deliberately two shapes, both rendered from `public/icon.svg`:
@@ -123,7 +123,7 @@ keeps its DS values and is still the source of truth for light. A single
 tokens resolve to, so every existing utility (`bg-paper`, `text-ink`,
 `border-rule`) follows automatically.
 
-Light mode is byte-identical to before the change — verified by pixel diff at
+Light mode is byte-identical to before the change - verified by pixel diff at
 1440/768/375, 0 differing pixels out of 24 million.
 
 The page alternates light body sections with dark bands (hero, engagement
@@ -151,7 +151,7 @@ existing DS tokens. Measured dark contrast on void / paper / surface:
 Two fixes fell out of the work, both of which also affected light mode:
 
 1. The `focus-on-amber` utility was deleted. It painted a `void` outline at a
-   3px offset, which lands on the surface *behind* the control — so on the
+   3px offset, which lands on the surface *behind* the control - so on the
    hero's `bg-void` it was void-on-void. Amber CTAs now use `focus-inverse`;
    everything else uses the base `:focus-visible`, whose `blueprint` re-points
    to `blueprint-light` in dark.
@@ -160,8 +160,8 @@ Two fixes fell out of the work, both of which also affected light mode:
    would have left `void` text on a near-black fill. It is now `hover:bg-inverse`.
 
 `color-scheme: light dark` is declared both as a `<meta>` and as a CSS property
-on `html`, so UA-painted chrome the author cannot style — scrollbars, the
-native `<select>` popup, autofill — follows the active scheme.
+on `html`, so UA-painted chrome the author cannot style - scrollbars, the
+native `<select>` popup, autofill - follows the active scheme.
 
 ## Accessibility and performance notes
 
@@ -171,7 +171,7 @@ native `<select>` popup, autofill — follows the active scheme.
   unsupported. The single client component is the optional brief form.
 - Every animation is gated behind `prefers-reduced-motion: no-preference`, with
   a global reduce-motion override as a backstop.
-- Focus is never removed — `:focus-visible` has a light-surface default plus
+- Focus is never removed - `:focus-visible` has a light-surface default plus
   `focus-inverse` and `focus-on-amber` variants for dark and amber surfaces.
 - `scroll-padding-top: 5.5rem` keeps anchor targets clear of the sticky nav.
 - The hero diagram is inline SVG with `<title>`/`<desc>`, so it costs no request
@@ -181,8 +181,8 @@ native `<select>` popup, autofill — follows the active scheme.
 
 Three placeholders in [`src/lib/site.ts`](src/lib/site.ts) need real values:
 
-1. `links.calendly` — the live Calendly event URL
-2. `links.projectForm` — the live Google Form URL
+1. `links.calendly` - the live Calendly event URL
+2. `links.projectForm` - the live Google Form URL
 `site.email` is set to `websyncr.info@gmail.com` and drives the footer link, the
 `Direct:` line, and the brief form's composed message.
 
@@ -193,7 +193,7 @@ Figures on this site are load-bearing claims. When editing
 
 - The five verified stats are exact. Do not round, extrapolate, or add new ones.
 - The 50+ enterprise clients and $6.8M+ pipeline figures belong to an AI hiring
-  platform that was architected and built — they are not a personal client
+  platform that was architected and built - they are not a personal client
   count. **Their `label` strings are the only place that qualifier now lives**
   ("via an AI hiring platform he built" / "on that same platform"), so they must
   not be shortened for visual balance. There is no footnote backing them up.
@@ -202,7 +202,7 @@ Figures on this site are load-bearing claims. When editing
 - There are no testimonials, and none should be added without a real, attributed
   source. The predecessor site at websyncr.in carried eight named quotes
   (Jason Miller, Liam Nguyen, Sophie Harrington and five more) that could not be
-  verified — one credited the work to "Ravi", not to the founder — so none were
+  verified - one credited the work to "Ravi", not to the founder - so none were
   carried across. Nor were `100% Client Satisfaction`, `4.9 Average Rating`,
   `24h Avg Delivery`, or `50+ Projects Delivered`; that last one is a materially
   stronger claim than the approved `50+ enterprise clients architected for, via
@@ -249,7 +249,7 @@ Rules that are easy to undo by accident:
 
 ## Trust
 
-At $15k-$35k, generic social proof does nothing — unattributed testimonials and
+At $15k-$35k, generic social proof does nothing - unattributed testimonials and
 context-free ratings measurably fail on high-ticket B2B pages. With every client
 under NDA, trust has to come from specificity instead:
 
@@ -261,7 +261,7 @@ under NDA, trust has to come from specificity instead:
   buyer can test against their own quotes beats a claim about us.
 - **A concrete failure policy.** The "What if the build goes wrong?" FAQ commits
   to specific behaviour: code and deploy access from the first milestone, and a
-  written handover if the engagement ends early. **This is a real commitment —
+  written handover if the engagement ends early. **This is a real commitment -
   keep it true to how you actually work, or remove it.** A promise that is not
   honoured is worse than no promise.
 - **Named, linked, verifiable founder.** LinkedIn, GitHub, and a personal domain
@@ -293,5 +293,5 @@ solo operator with no agency overhead can defend. Two rules:
    costs a serious client nothing and filters out the rest.
 
 Hourly (`hourlyRate` in `content.ts`) is deliberately a footnote rather than a
-fifth card — it exists for work too small to scope, and giving it card parity
+fifth card - it exists for work too small to scope, and giving it card parity
 would undercut the fixed-price argument the section just made.

@@ -1,6 +1,6 @@
 /**
  * Websyncr brand mark, inlined so it costs no request and cannot shift layout.
- * Each path draws twice — an 80% fill under a 4px stroke — for the outlined look.
+ * Each path draws twice - an 80% fill under a 4px stroke - for the outlined look.
  */
 
 const PATHS = [

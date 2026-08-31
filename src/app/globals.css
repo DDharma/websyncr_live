@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 /* ==========================================================================
-   WEBSYNCR DESIGN SYSTEM — TOKENS
+   WEBSYNCR DESIGN SYSTEM - TOKENS
    Single source of truth. Every value below is lifted from
    "Websyncr Landing.dc.html". Nothing here is invented.
 
@@ -30,7 +30,7 @@
 
   /* The established Websyncr brand cyan, kept exactly as supplied. This is the
      one colour outside the DS palette, and it is scoped to the logo mark only
-     — never text, never UI, never a border. Declared here rather than inlined
+     - never text, never UI, never a border. Declared here rather than inlined
      so there is still a single source of truth for it. */
   --color-brand: #00c2ff;
 
@@ -61,19 +61,19 @@
   --text-h2-lg--letter-spacing: -0.01em;
   --text-h2-lg--font-weight: 600;
 
-  --text-h3: 1.375rem; /* 22 — offer card title */
+  --text-h3: 1.375rem; /* 22 - offer card title */
   --text-h3--line-height: 1.25;
   --text-h3--font-weight: 600;
 
-  --text-h4: 1.25rem; /* 20 — case-study category heading */
+  --text-h4: 1.25rem; /* 20 - case-study category heading */
   --text-h4--line-height: 1.3;
   --text-h4--font-weight: 600;
 
-  --text-h5: 1.125rem; /* 18 — case card title */
+  --text-h5: 1.125rem; /* 18 - case card title */
   --text-h5--line-height: 1.35;
   --text-h5--font-weight: 600;
 
-  --text-h6: 1.03125rem; /* 16.5 — process step title */
+  --text-h6: 1.03125rem; /* 16.5 - process step title */
   --text-h6--line-height: 1.4;
   --text-h6--font-weight: 600;
 
@@ -90,33 +90,33 @@
   --text-lede--line-height: 1.6;
   --text-body: 1rem; /* 16 */
   --text-body--line-height: 1.6;
-  --text-prose: 1.03125rem; /* 16.5 — about copy */
+  --text-prose: 1.03125rem; /* 16.5 - about copy */
   --text-prose--line-height: 1.75;
-  --text-card: 0.90625rem; /* 14.5 — card copy */
+  --text-card: 0.90625rem; /* 14.5 - card copy */
   --text-card--line-height: 1.6;
-  --text-answer: 0.96875rem; /* 15.5 — faq answer */
+  --text-answer: 0.96875rem; /* 15.5 - faq answer */
   --text-answer--line-height: 1.7;
-  --text-note: 0.84375rem; /* 13.5 — process copy */
+  --text-note: 0.84375rem; /* 13.5 - process copy */
   --text-note--line-height: 1.6;
-  --text-mini: 0.8125rem; /* 13 — extras copy */
+  --text-mini: 0.8125rem; /* 13 - extras copy */
   --text-mini--line-height: 1.5;
 
   /* Mono (IBM Plex Mono 400/500/600) */
-  --text-m2xs: 0.65625rem; /* 10.5 — form caption */
+  --text-m2xs: 0.65625rem; /* 10.5 - form caption */
   --text-m2xs--line-height: 1.4;
-  --text-mxs: 0.6875rem; /* 11 — meta, small labels */
+  --text-mxs: 0.6875rem; /* 11 - meta, small labels */
   --text-mxs--line-height: 1.5;
-  --text-msm: 0.71875rem; /* 11.5 — stat label, founder line */
+  --text-msm: 0.71875rem; /* 11.5 - stat label, founder line */
   --text-msm--line-height: 1.5;
-  --text-mbase: 0.75rem; /* 12 — nav links, badges */
+  --text-mbase: 0.75rem; /* 12 - nav links, badges */
   --text-mbase--line-height: 1.4;
-  --text-mmd: 0.78125rem; /* 12.5 — card link, facts table */
+  --text-mmd: 0.78125rem; /* 12.5 - card link, facts table */
   --text-mmd--line-height: 1.4;
-  --text-mlg: 0.8125rem; /* 13 — hero CTA */
+  --text-mlg: 0.8125rem; /* 13 - hero CTA */
   --text-mlg--line-height: 1.3;
-  --text-mxl: 0.84375rem; /* 13.5 — closing CTA */
+  --text-mxl: 0.84375rem; /* 13.5 - closing CTA */
   --text-mxl--line-height: 1.3;
-  --text-logo: 0.9375rem; /* 15 — wordmark */
+  --text-logo: 0.9375rem; /* 15 - wordmark */
   --text-logo--line-height: 1.2;
   --text-price: 1.25rem; /* 20 */
   --text-price--line-height: 1.2;
@@ -140,22 +140,44 @@
 
   /* --- Layout ------------------------------------------------------------ */
   --container-sheet: 72.5rem; /* 1160px */
-  --container-column: 50rem; /* 800px  — FAQ measure */
+  --container-column: 50rem; /* 800px  - FAQ measure */
 
   /* --- Motion ------------------------------------------------------------ */
   --ease-sheet: cubic-bezier(0.4, 0, 0.2, 1);
-  --animate-dash: dash 0.9s ease forwards;
   --animate-rise: rise 0.6s ease forwards;
 
-  @keyframes dash {
-    to {
-      stroke-dashoffset: 0;
-    }
-  }
+  /* Listbox panel. Short enough to read as the field opening rather than as a
+     second surface arriving. Two directions because the panel flips above the
+     field when the viewport runs out below it. */
+  --animate-drop: drop 140ms var(--ease-sheet);
+  --animate-drop-up: drop-up 140ms var(--ease-sheet);
+
   @keyframes rise {
     from {
       opacity: 0;
       transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes drop {
+    from {
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes drop-up {
+    from {
+      opacity: 0;
+      transform: translateY(5px);
     }
     to {
       opacity: 1;
@@ -168,7 +190,7 @@
    DARK SCHEME
    Follows the operating system via prefers-color-scheme. No toggle, no
    JavaScript, no localStorage, and therefore no flash of the wrong theme on
-   first paint — the page has no client-side theme state to hydrate.
+   first paint - the page has no client-side theme state to hydrate.
 
    Nothing here renames a token. The palette above keeps its DS values and is
    still the source of truth for light; this block redefines what a handful of
@@ -178,7 +200,7 @@
    The page alternates light body sections with dark bands (hero, engagement
    model, process, footer). That rhythm is preserved rather than flattened:
    `void` stays the deepest surface, `paper` sits one step above it, and
-   `surface` one above that — so the bands still read as bands.
+   `surface` one above that - so the bands still read as bands.
 
      surface  #222731   L 0.0201   cards
      paper    #191D24   L 0.0121   page body
@@ -232,7 +254,7 @@
     scroll-padding-top: 5.5rem;
     -webkit-text-size-adjust: 100%;
     /* Declared as a property as well as a <meta>, so UA-painted chrome the
-       author cannot style — scrollbars, the native <select> popup, autofill —
+       author cannot style - scrollbars, the native <select> popup, autofill -
        follows the active scheme instead of staying light on a dark page. */
     color-scheme: light dark;
   }
@@ -295,7 +317,7 @@
    UTILITIES
    ========================================================================== */
 
-/* 40px blueprint grid — dark surfaces only (DS hero + closing sheet). */
+/* 40px blueprint grid - dark surfaces only (DS hero + closing sheet). */
 @utility blueprint-grid {
   background-image:
     repeating-linear-gradient(
@@ -316,7 +338,7 @@
 
 /**
  * Hover tint transition. Deliberately not Tailwind's `transition-colors`,
- * whose property list includes `outline-color` — that fades the focus ring in
+ * whose property list includes `outline-color` - that fades the focus ring in
  * over 150ms instead of showing it the instant the control takes focus.
  */
 @utility transition-tint {
@@ -329,7 +351,7 @@
  * Focus ring for controls sitting on --color-void.
  *
  * `outline-offset` places the ring outside the control, on the surface behind
- * it — so the ring has to contrast with that surface, not with the control's
+ * it - so the ring has to contrast with that surface, not with the control's
  * own fill. Everything on a light body section is served by the base
  * `:focus-visible` rule (blueprint, which re-points to blueprint-light in
  * dark); this variant exists only for controls on the dark bands, where
@@ -360,7 +382,7 @@
  * Scroll-driven reveal, replacing the DS's IntersectionObserver.
  *
  * Deliberately CSS-only: no client bundle, no hydration, and content is
- * never hidden by default — if `animation-timeline` is unsupported, or the
+ * never hidden by default - if `animation-timeline` is unsupported, or the
  * visitor prefers reduced motion, the element simply renders in place.
  * Stagger comes from `--reveal-step` (an integer index), not a time delay,
  * because scroll timelines advance on progress rather than time.
@@ -377,21 +399,188 @@
   }
 }
 
-/**
- * Hero diagram connector strokes. Time-based (above the fold, runs on load)
- * exactly as the DS specifies, and inert under reduced motion.
- */
-@utility draw {
-  stroke-dasharray: 60;
+/* ==========================================================================
+   NUMERAL WATERMARK
+   The giant "1" behind the engagement-model band. Drawn as an outline rather
+   than a low-opacity fill so it reads as a blueprint annotation instead of a
+   grey smudge, and so it never lifts the background enough to cost the body
+   copy contrast.
 
-  @media (prefers-reduced-motion: no-preference) {
-    stroke-dashoffset: 60;
-    animation: dash 0.9s ease forwards;
+   `-webkit-text-stroke` is unprefixed nowhere, so the plain fill below is the
+   real declaration and the @supports block is the upgrade. Fill has to be
+   cleared to transparent inside the block or the stroke rides on a solid glyph.
+   ========================================================================== */
+
+.numeral-mark {
+  font-size: clamp(12rem, 27vw, 27rem);
+  line-height: 0.72;
+  color: rgb(110 147 181 / 0.09);
+}
+
+@supports (-webkit-text-stroke: 1px currentColor) {
+  .numeral-mark {
+    color: transparent;
+    -webkit-text-stroke: 2px rgb(110 147 181 / 0.26);
   }
 }
 
 /* ==========================================================================
-   MOTION — every animation is opt-out via prefers-reduced-motion.
+   HERO PIPELINE
+   The idea -> ship timeline. Time-based rather than scroll-driven, because it
+   sits above the fold and has to run on load.
+
+   One cycle walks all five phases; `--flow-step` is a fifth of it. Every
+   animated part is delayed by `--i` steps, so a phase lights, its connector
+   carries a pulse down to the next phase, and that phase lights as the pulse
+   lands. Each connector animates within its own bounds, so nothing has to be
+   hand-synced against a shared rail and the cadence survives a row changing
+   height.
+
+   The keyframe percentages below are the one thing tied to the phase count: a
+   step is 20% of the cycle, so a pulse has to clear its connector by 20% and a
+   phase has to go dark by 26%. Adding or removing a phase means rescaling them
+   as well as the divisor above - CSS cannot calc() a keyframe selector.
+
+   Colours are inlined as rgb() only where a keyframe or a shadow needs an
+   alpha - the channels are `--color-amber` (#c98a2c) and `--color-inverse`
+   (#f2f4f6). Resting text alphas stay at or above the 0.50 floor set at the
+   top of this file.
+   ========================================================================== */
+
+.flow {
+  --flow-cycle: 8s;
+  --flow-step: calc(var(--flow-cycle) / 5);
+}
+
+.flow-step {
+  --flow-delay: calc(var(--i) * var(--flow-step));
+}
+
+.flow-dot {
+  margin-top: 6px; /* centres the dot on the phase title's first line */
+  display: block;
+  height: 11px;
+  width: 11px;
+  border: 1.5px solid var(--color-blueprint-light);
+  border-radius: 9999px;
+}
+
+/* Spans from below this phase's dot to just above the next one. Positioned
+   against the <li>, so the negative `bottom` crosses the row gap. */
+.flow-link {
+  position: absolute;
+  top: 22px;
+  bottom: -3px;
+  left: 5px;
+  width: 1px;
+  overflow: hidden;
+  background-color: rgb(242 244 246 / 0.24);
+}
+
+.flow-link::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 34%;
+  opacity: 0;
+  background-image: linear-gradient(
+    180deg,
+    rgb(201 138 44 / 0),
+    var(--color-amber),
+    rgb(201 138 44 / 0)
+  );
+  transform: translateY(-100%);
+}
+
+.flow-num {
+  color: rgb(242 244 246 / 0.55);
+}
+
+.flow-week {
+  align-self: start;
+  border-color: rgb(242 244 246 / 0.16);
+  color: rgb(242 244 246 / 0.55);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .flow-step {
+    animation: rise 0.55s var(--ease-sheet) calc(var(--i) * 90ms) both;
+  }
+
+  .flow-dot {
+    animation: flow-lit-dot var(--flow-cycle) var(--ease-sheet) var(--flow-delay) infinite;
+  }
+
+  .flow-num,
+  .flow-week {
+    animation: flow-lit-text var(--flow-cycle) var(--ease-sheet) var(--flow-delay) infinite;
+  }
+
+  .flow-link::after {
+    animation: flow-travel var(--flow-cycle) linear var(--flow-delay) infinite;
+  }
+}
+
+@keyframes flow-lit-dot {
+  0% {
+    border-color: var(--color-amber);
+    background-color: var(--color-amber);
+    box-shadow: 0 0 0 0 rgb(201 138 44 / 0.5);
+  }
+  13% {
+    border-color: var(--color-amber);
+    background-color: var(--color-amber);
+    box-shadow: 0 0 0 7px rgb(201 138 44 / 0);
+  }
+  17% {
+    border-color: var(--color-amber);
+    background-color: var(--color-amber);
+    box-shadow: 0 0 0 7px rgb(201 138 44 / 0);
+  }
+  26%,
+  100% {
+    border-color: var(--color-blueprint-light);
+    background-color: transparent;
+    box-shadow: 0 0 0 0 rgb(201 138 44 / 0);
+  }
+}
+
+@keyframes flow-lit-text {
+  0%,
+  17% {
+    border-color: rgb(201 138 44 / 0.55);
+    color: var(--color-amber);
+  }
+  26%,
+  100% {
+    border-color: rgb(242 244 246 / 0.16);
+    color: rgb(242 244 246 / 0.55);
+  }
+}
+
+/* The band is 34% of the connector, so translateY(300%) clears one full
+   connector height. Held off-screen for the rest of the cycle at zero opacity,
+   which is what makes the loop restart invisible. */
+@keyframes flow-travel {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  4%,
+  15% {
+    opacity: 1;
+  }
+  20%,
+  100% {
+    opacity: 0;
+    transform: translateY(300%);
+  }
+}
+
+/* ==========================================================================
+   MOTION - every animation is opt-out via prefers-reduced-motion.
    ========================================================================== */
 
 @media (prefers-reduced-motion: reduce) {

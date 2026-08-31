@@ -14,8 +14,8 @@ export function Capabilities() {
         AI systems, web apps, and everything around them.
       </SectionHeading>
       <p className="mb-12 max-w-[60ch] text-body text-muted">
-        Every engagement is assembled from these. One person across all of them, which is why they
-        integrate instead of being handed between specialists.
+        Every engagement is assembled from these. One person works across all of them, which is why
+        the pieces fit together instead of getting handed between specialists.
       </p>
 
       <ul className="grid list-none grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">

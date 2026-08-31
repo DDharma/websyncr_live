@@ -2,7 +2,7 @@
   "name": "websyncr",
   "version": "1.0.0",
   "private": true,
-  "description": "Websyncr — full-stack engineering & AI systems architecture studio. Static marketing site.",
+  "description": "Websyncr - full-stack engineering & AI systems architecture studio. Static marketing site.",
   "engines": {
     "node": ">=20.9.0"
   },

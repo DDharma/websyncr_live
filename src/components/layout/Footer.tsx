@@ -1,6 +1,6 @@
 /**
  * Closing CTA sheet and footer; the Websyncr wordmark is the masthead here.
- * Founder credit sits at inverse/60 — the lowest alpha that still passes 1.4.3.
+ * Founder credit sits at inverse/60 - the lowest alpha that still passes 1.4.3.
  */
 
 import { CtaButton } from '@/components/ui/CtaButton';
@@ -58,7 +58,7 @@ export function Footer() {
         </div>
 
         <p className="mt-6 font-mono text-mxs text-inverse/60">
-          © {year} {site.name}. Every engagement led personally by{' '}
+          © {year} {site.name}. Every engagement is led personally by{' '}
           <a
             href={founder.website}
             {...externalLinkProps}
@@ -66,7 +66,7 @@ export function Footer() {
           >
             {founder.name}
           </a>
-          , {founder.role} - not a bench of contractors.
+          , {founder.role}.
         </p>
       </div>
     </footer>

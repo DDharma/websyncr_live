@@ -3,18 +3,14 @@
 import { useState } from 'react';
 import { SectionHeading } from '@/components/ui/Section';
 import { CtaButton } from '@/components/ui/CtaButton';
+import { Field, TextArea, TextInput } from '@/components/ui/Field';
+import { Select } from '@/components/ui/Select';
 import { briefFields } from '@/content/content';
 import { site, links, primaryCta, externalLinkProps } from '@/lib/site';
 
 /**
- * Project brief that composes a pre-filled mailto — no backend, nothing stored.
- * Field borders use `muted` (6.00:1), not `rule`, to satisfy WCAG 1.4.11.
+ * Project brief that composes a pre-filled mailto - no backend, nothing stored.
  */
-
-const FIELD_BASE =
-  'w-full rounded-tag border border-muted bg-surface px-3.5 py-2.5 font-sans text-card text-ink placeholder:text-muted/80 hover:border-ink-soft focus-visible:border-blueprint motion-safe:transition-tint';
-
-const SELECT_FIELD = `${FIELD_BASE} cursor-pointer appearance-none pr-10 invalid:text-muted/80`;
 
 export function Contact() {
   const [status, setStatus] = useState<string | null>(null);
@@ -55,9 +51,9 @@ export function Contact() {
             Rather send details first?
           </SectionHeading>
           <p className="mb-8 max-w-[54ch] text-body text-muted">
-            The 20-minute discovery call is the fastest route to a fixed number - book it and the
-            proposal follows within 24–48 hours. If you would rather write it down, the project
-            brief opens a pre-filled email in your own mail client. Nothing is sent to a server.
+            The 20-minute discovery call is the fastest route to a fixed number, and the proposal
+            follows within 24–48 hours. If you would rather write it down first, the project brief
+            opens a pre-filled email in your own mail client. Nothing is sent to a server.
           </p>
 
           <div className="flex flex-col items-start gap-4">
@@ -98,88 +94,43 @@ export function Contact() {
             {briefFields.map((field) => {
               const id = `brief-${field.id}`;
               return (
-                <div key={field.id} className="flex flex-col gap-1.5">
-                  <label htmlFor={id} className="font-mono text-mxs tracking-meta text-muted uppercase">
-                    {field.label}
-                    {field.required ? (
-                      <>
-                        {' '}
-                        <span aria-hidden="true" className="text-blueprint">
-                          *
-                        </span>
-                        <span className="sr-only">(required)</span>
-                      </>
-                    ) : (
-                      <span className="text-muted"> (optional)</span>
-                    )}
-                  </label>
-
+                <Field key={field.id} id={id} label={field.label} required={field.required}>
                   {field.type === 'select' ? (
-                    <div className="relative">
-                      <select
-                        id={id}
-                        name={field.id}
-                        required={field.required}
-                        defaultValue=""
-                        className={SELECT_FIELD}
-                      >
-                        <option value="" disabled>
-                          Select an engagement
-                        </option>
-                        {field.options.map((option) => (
-                          <option key={option} value={option}>
-                            {option}
-                          </option>
-                        ))}
-                      </select>
-                      <svg
-                        viewBox="0 0 12 8"
-                        aria-hidden="true"
-                        className="pointer-events-none absolute top-1/2 right-3.5 h-2 w-3 -translate-y-1/2 text-muted"
-                      >
-                        <path
-                          d="M1 1.5 6 6.5 11 1.5"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="1.5"
-                          strokeLinecap="square"
-                        />
-                      </svg>
-                    </div>
+                    <Select
+                      id={id}
+                      name={field.id}
+                      options={field.options}
+                      placeholder="Select an engagement"
+                      required={field.required}
+                      invalidMessage="Pick an engagement so the reply comes back with a number attached."
+                    />
                   ) : field.type === 'textarea' ? (
-                    <textarea
+                    <TextArea
                       id={id}
                       name={field.id}
                       required={field.required}
-                      rows={4}
                       placeholder={field.placeholder}
-                      className={`${FIELD_BASE} resize-y`}
                     />
                   ) : (
-                    <input
+                    <TextInput
                       id={id}
                       name={field.id}
-                      type="text"
                       required={field.required}
                       placeholder={field.placeholder}
                       autoComplete={field.autoComplete}
-                      className={FIELD_BASE}
                     />
                   )}
-                </div>
+                </Field>
               );
             })}
           </div>
 
-          <button
-            type="submit"
-            className="mt-6 w-full cursor-pointer rounded-tag bg-ink px-7 py-3.5 font-mono text-mmd tracking-cta text-paper uppercase hover:bg-blueprint motion-safe:transition-tint"
-          >
+          <CtaButton type="submit" variant="ink" size="md" className="mt-6 w-full uppercase">
             Compose the brief <span aria-hidden="true">→</span>
-          </button>
+          </CtaButton>
 
           <p id="brief-note" className="mt-3 font-mono text-mxs text-muted">
-            Opens your mail client. No data is stored or transmitted by this site.
+            This opens your own mail client. The site itself stores nothing.
           </p>
 
           <p role="status" aria-live="polite" className="mt-2 font-mono text-mxs text-blueprint">

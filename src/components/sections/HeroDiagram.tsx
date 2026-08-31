@@ -1,111 +1,87 @@
 /**
- * The idea → ship pipeline as inline SVG, carrying one text alternative.
- * The viewBox is cropped to drawn content; the old one left ~150px dead margin.
+ * The idea -> ship pipeline as a four-week vertical timeline.
+ * `--i` is the phase index every animation delays off; the cadence is in globals.css.
  */
 
-const NODES = [
-  { x: 16, w: 81, cx: 56, label: 'Idea', num: '01' },
-  { x: 145, w: 110, cx: 200, label: 'Architecture', num: '02' },
-  { x: 303, w: 110, cx: 358, label: 'Build', num: '03' },
-  { x: 461, w: 81, cx: 501, label: 'Ship', num: '04' },
-] as const;
+type Phase = {
+  num: string;
+  label: string;
+  detail: string;
+  week: string;
+};
 
-const CONNECTORS = [
-  { x1: 97, x2: 145, cx: 121, label: 'Discovery', delay: '0.1s' },
-  { x1: 255, x2: 303, cx: 279, label: 'RAG · Next.js', delay: '0.4s' },
-  { x1: 413, x2: 461, cx: 437, label: 'CI/CD', delay: '0.7s' },
-] as const;
+const PHASES: readonly Phase[] = [
+  {
+    num: '01',
+    label: 'Idea',
+    detail: 'A call about the actual problem.',
+    week: 'Week 01',
+  },
+  {
+    num: '02',
+    label: 'Architecture',
+    detail: 'Scope locked, then one fixed number.',
+    week: 'Week 01',
+  },
+  {
+    num: '03',
+    label: 'Build',
+    detail: 'RAG, Next.js, typed end to end.',
+    week: 'Week 02',
+  },
+  {
+    num: '04',
+    label: 'Harden',
+    detail: 'Tests, edge cases, and the fixes they surface.',
+    week: 'Week 03',
+  },
+  {
+    num: '05',
+    label: 'Ship',
+    detail: 'CI/CD wired up, docs, then handover.',
+    week: 'Week 04',
+  },
+];
 
 export function HeroDiagram() {
   return (
-    <svg
-      viewBox="8 98 544 146"
-      role="img"
-      aria-labelledby="pipeline-title pipeline-desc"
-      className="block h-auto w-full"
-    >
-      <title id="pipeline-title">The idea-to-ship delivery pipeline</title>
-      <desc id="pipeline-desc">
-        A four-stage pipeline: Idea, then Architecture via a discovery call, then Build using RAG
-        and Next.js, then Ship through CI/CD - architected and built by one person, with no bench
-        and no handoffs.
-      </desc>
+    <div className="flow max-w-124">
+      <p className="mb-6 flex items-baseline justify-between gap-4 border-b border-inverse/14 pb-3 font-mono text-mxs tracking-sheet uppercase">
+        <span className="text-inverse/60">
+          Idea <span aria-hidden="true">&rarr;</span>
+          <span className="sr-only">to</span> Ship
+        </span>
+        <span className="text-amber">Four weeks</span>
+      </p>
 
-      <g aria-hidden="true" fontFamily="var(--font-mono)">
-        {CONNECTORS.map((c) => (
-          <g key={c.label}>
-            <line
-              x1={c.x1}
-              y1="150"
-              x2={c.x2}
-              y2="150"
-              stroke="var(--color-blueprint-light)"
-              strokeWidth="1.6"
-              className="draw"
-              style={{ animationDelay: c.delay }}
-            />
-            <text
-              x={c.cx}
-              y="110"
-              fill="var(--color-inverse)"
-              fillOpacity="0.6"
-              fontSize="9"
-              letterSpacing="0.5"
-              textAnchor="middle"
-            >
-              {c.label.toUpperCase()}
-            </text>
-          </g>
+      <ol className="m-0 list-none p-0">
+        {PHASES.map((phase, i) => (
+          <li
+            key={phase.num}
+            className="flow-step relative grid grid-cols-[11px_minmax(0,1fr)_auto] items-start gap-x-4 pb-9 last:pb-0"
+            style={{ '--i': i } as React.CSSProperties}
+          >
+            <span aria-hidden="true" className="flow-dot" />
+            {i < PHASES.length - 1 && <span aria-hidden="true" className="flow-link" />}
+
+            <div className="min-w-0">
+              <p className="text-h6 font-display text-inverse">
+                <span className="flow-num mr-2 font-mono text-msm">{phase.num}</span>
+                {phase.label}
+              </p>
+              <p className="mt-1 text-mini text-inverse/65">{phase.detail}</p>
+            </div>
+
+            <span className="flow-week rounded-tag border px-2 py-1 font-mono text-m2xs tracking-meta whitespace-nowrap uppercase">
+              {phase.week}
+            </span>
+          </li>
         ))}
+      </ol>
 
-        {NODES.map((n) => (
-          <g key={n.num}>
-            <rect
-              x={n.x}
-              y="120"
-              width={n.w}
-              height="60"
-              rx="3"
-              fill="var(--color-inverse)"
-              fillOpacity="0.03"
-              stroke="var(--color-blueprint-light)"
-              strokeWidth="1.2"
-            />
-            <text
-              x={n.cx}
-              y="141"
-              fill="var(--color-inverse)"
-              fontSize="10"
-              letterSpacing="0.5"
-              textAnchor="middle"
-            >
-              {n.label.toUpperCase()}
-            </text>
-            <text
-              x={n.cx}
-              y="157"
-              fill="var(--color-inverse)"
-              fillOpacity="0.6"
-              fontSize="8"
-              textAnchor="middle"
-            >
-              {n.num}
-            </text>
-          </g>
-        ))}
-
-        <text
-          x="280"
-          y="230"
-          fill="var(--color-inverse)"
-          fillOpacity="0.55"
-          fontSize="10"
-          letterSpacing="1"
-          textAnchor="middle"
-        >
-          ARCHITECTED &amp; BUILT BY ONE PERSON - NO BENCH, NO HANDOFFS
-        </text>
-      </g>
-    </svg>
+      <p className="mt-7 border-t border-inverse/14 pt-4 font-mono text-m2xs tracking-sheet text-inverse/55 uppercase">
+        Architected &amp; built by one person, start to finish
+      </p>
+    </div>
   );
 }

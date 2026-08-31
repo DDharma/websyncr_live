@@ -1,6 +1,6 @@
 /**
  * Case studies in two categories, plus the additional-systems grid.
- * Additional systems are static text — there is no per-system page to link to.
+ * A card links out only when it carries an `href`; additional systems never do.
  */
 
 import type { ReactNode } from 'react';
@@ -43,7 +43,17 @@ function CaseGrid({
           {glyph}
           <h4 className="text-h5 font-display text-ink">{item.title}</h4>
           <p className="font-mono text-mxs text-muted">{item.meta}</p>
-          <p className="text-card text-muted">{item.description}</p>
+          <p className="flex-1 text-card text-muted">{item.description}</p>
+          {item.href ? (
+            <a
+              href={item.href}
+              className="flex items-center gap-1.5 border-t border-rule pt-3.5 font-mono text-mmd text-ink uppercase no-underline hover:text-blueprint motion-safe:transition-tint"
+            >
+              Read the case study
+              <span aria-hidden="true">→</span>
+              <span className="sr-only">: {item.title}</span>
+            </a>
+          ) : null}
         </Sheet>
       ))}
     </ul>
@@ -59,7 +69,7 @@ export function Work() {
 
       <CategoryHeader
         id="work-set-a"
-        title="Independent Client Delivery"
+        title="Independent client delivery"
         note="(Confidential Client)"
       />
       <div className="mb-16">
@@ -68,7 +78,7 @@ export function Work() {
 
       <CategoryHeader
         id="work-set-b"
-        title="Enterprise Architecture & Technical Leadership"
+        title="Enterprise architecture & technical leadership"
         note="(as Technical Lead / Architect)"
       />
       <div className="mb-14">
